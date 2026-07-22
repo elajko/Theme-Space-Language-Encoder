@@ -45,12 +45,6 @@
       "count": "singular",
       "gender": "feminine"
     },
-    "her": {
-      "pos": "PRON",
-      "person": "3rd",
-      "count": "singular",
-      "gender": "feminine"
-    },
     "it": {
       "pos": "PRON",
       "person": "3rd",
@@ -66,6 +60,26 @@
       "pos": "PRON",
       "person": "3rd",
       "count": "plural"
+    },
+    "her": {
+      "pos": "AMBIG",
+      "readings": [
+        {
+          "pos": "DET",
+          "definiteness": "definite",
+          "possessor": {
+            "person": "3rd",
+            "count": "singular",
+            "gender": "feminine"
+          }
+        },
+        {
+          "pos": "PRON",
+          "person": "3rd",
+          "count": "singular",
+          "gender": "feminine"
+        }
+      ]
     },
     "the": {
       "pos": "DET",
@@ -89,6 +103,16 @@
       "definiteness": "demonstrative",
       "distance": "distal"
     },
+    "these": {
+      "pos": "DET",
+      "definiteness": "demonstrative",
+      "distance": "proximal"
+    },
+    "those": {
+      "pos": "DET",
+      "definiteness": "demonstrative",
+      "distance": "distal"
+    },
     "all": {
       "pos": "DET",
       "quantifier": "ALL"
@@ -108,6 +132,88 @@
     "other": {
       "pos": "DET",
       "quantifier": "OTHER"
+    },
+    "each": {
+      "pos": "DET",
+      "quantifier": "EACH"
+    },
+    "every": {
+      "pos": "DET",
+      "quantifier": "EVERY"
+    },
+    "any": {
+      "pos": "DET",
+      "quantifier": "ANY"
+    },
+    "no": {
+      "pos": "DET",
+      "quantifier": "NO"
+    },
+    "both": {
+      "pos": "DET",
+      "quantifier": "BOTH"
+    },
+    "either": {
+      "pos": "DET",
+      "quantifier": "EITHER"
+    },
+    "neither": {
+      "pos": "DET",
+      "quantifier": "NEITHER"
+    },
+    "several": {
+      "pos": "DET",
+      "quantifier": "SEVERAL"
+    },
+    "my": {
+      "pos": "DET",
+      "definiteness": "definite",
+      "possessor": {
+        "person": "1st",
+        "count": "singular"
+      }
+    },
+    "your": {
+      "pos": "DET",
+      "definiteness": "definite",
+      "possessor": {
+        "person": "2nd",
+        "count": "singular"
+      }
+    },
+    "his": {
+      "pos": "DET",
+      "definiteness": "definite",
+      "possessor": {
+        "person": "3rd",
+        "count": "singular",
+        "gender": "masculine"
+      }
+    },
+    "its": {
+      "pos": "DET",
+      "definiteness": "definite",
+      "possessor": {
+        "person": "3rd",
+        "count": "singular",
+        "gender": "neuter"
+      }
+    },
+    "our": {
+      "pos": "DET",
+      "definiteness": "definite",
+      "possessor": {
+        "person": "1st",
+        "count": "plural"
+      }
+    },
+    "their": {
+      "pos": "DET",
+      "definiteness": "definite",
+      "possessor": {
+        "person": "3rd",
+        "count": "plural"
+      }
     },
     "one": {
       "pos": "NUM",
@@ -1285,6 +1391,91 @@
       "roles": [
         "instrument",
         "comitative"
+      ]
+    },
+    "against": {
+      "pos": "ADP",
+      "roles": [
+        "comitative"
+      ]
+    },
+    "for": {
+      "pos": "ADP",
+      "roles": [
+        "beneficiary"
+      ]
+    },
+    "about": {
+      "pos": "ADP",
+      "roles": [
+        "topic"
+      ]
+    },
+    "by": {
+      "pos": "ADP",
+      "roles": [
+        "location"
+      ]
+    },
+    "into": {
+      "pos": "ADP",
+      "roles": [
+        "goal"
+      ]
+    },
+    "onto": {
+      "pos": "ADP",
+      "roles": [
+        "goal"
+      ]
+    },
+    "under": {
+      "pos": "ADP",
+      "roles": [
+        "location"
+      ]
+    },
+    "over": {
+      "pos": "ADP",
+      "roles": [
+        "location"
+      ]
+    },
+    "above": {
+      "pos": "ADP",
+      "roles": [
+        "location"
+      ]
+    },
+    "below": {
+      "pos": "ADP",
+      "roles": [
+        "location"
+      ]
+    },
+    "between": {
+      "pos": "ADP",
+      "roles": [
+        "location"
+      ]
+    },
+    "among": {
+      "pos": "ADP",
+      "roles": [
+        "location"
+      ]
+    },
+    "through": {
+      "pos": "ADP",
+      "roles": [
+        "path"
+      ]
+    },
+    "around": {
+      "pos": "ADP",
+      "roles": [
+        "path",
+        "location"
       ]
     },
     "am": {
@@ -2857,6 +3048,24 @@
           },
           "requiresRoles": [
             "goal"
+          ]
+        },
+        {
+          "action": "RUN_MOTION",
+          "linking": {
+            "subject": "agent"
+          },
+          "requiresRoles": [
+            "source"
+          ]
+        },
+        {
+          "action": "RUN_MOTION",
+          "linking": {
+            "subject": "agent"
+          },
+          "requiresRoles": [
+            "path"
           ]
         },
         {

@@ -40,7 +40,7 @@
     ]
   },
   "GIVE": {
-    "description": "A transfer of possession from an agent to a recipient.",
+    "description": "A transfer of possession from an agent to a recipient, optionally for the benefit of someone else.",
     "roles": [
       {
         "theme": "agent",
@@ -52,6 +52,10 @@
       },
       {
         "theme": "recipient",
+        "optional": true
+      },
+      {
+        "theme": "beneficiary",
         "optional": true
       }
     ]
@@ -96,6 +100,10 @@
       {
         "theme": "source",
         "optional": true
+      },
+      {
+        "theme": "path",
+        "optional": true
       }
     ]
   },
@@ -121,6 +129,10 @@
       },
       {
         "theme": "source",
+        "optional": true
+      },
+      {
+        "theme": "path",
         "optional": true
       }
     ]
@@ -255,6 +267,10 @@
       {
         "theme": "theme",
         "optional": true
+      },
+      {
+        "theme": "topic",
+        "optional": true
       }
     ]
   },
@@ -267,6 +283,10 @@
       },
       {
         "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "topic",
         "optional": true
       }
     ]
@@ -475,6 +495,10 @@
       {
         "theme": "source",
         "optional": true
+      },
+      {
+        "theme": "path",
+        "optional": true
       }
     ]
   },
@@ -492,6 +516,10 @@
       {
         "theme": "source",
         "optional": true
+      },
+      {
+        "theme": "path",
+        "optional": true
       }
     ]
   },
@@ -508,6 +536,10 @@
       },
       {
         "theme": "source",
+        "optional": true
+      },
+      {
+        "theme": "path",
         "optional": true
       }
     ]
@@ -693,6 +725,10 @@
       {
         "theme": "recipient",
         "optional": true
+      },
+      {
+        "theme": "beneficiary",
+        "optional": true
       }
     ]
   },
@@ -744,7 +780,7 @@
     ]
   },
   "SAY": {
-    "description": "To utter something, optionally to a recipient.",
+    "description": "To utter something, optionally to a recipient or about some topic.",
     "roles": [
       {
         "theme": "agent",
@@ -757,11 +793,15 @@
       {
         "theme": "recipient",
         "optional": true
+      },
+      {
+        "theme": "topic",
+        "optional": true
       }
     ]
   },
   "SING": {
-    "description": "To produce music with the voice.",
+    "description": "To produce music with the voice, optionally for the benefit of someone.",
     "roles": [
       {
         "theme": "agent",
@@ -770,11 +810,15 @@
       {
         "theme": "theme",
         "optional": true
+      },
+      {
+        "theme": "beneficiary",
+        "optional": true
       }
     ]
   },
   "PLAY": {
-    "description": "To engage in an activity for enjoyment.",
+    "description": "To engage in an activity for enjoyment, optionally for the benefit of someone.",
     "roles": [
       {
         "theme": "agent",
@@ -782,6 +826,10 @@
       },
       {
         "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "beneficiary",
         "optional": true
       }
     ]

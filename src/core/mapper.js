@@ -129,6 +129,14 @@ function npToReferent(roleName, np) {
   if (np.distance) relationToWorld.distance = np.distance;
   if (np.quantifier) relationToWorld.quantifier = np.quantifier;
   if (np.quantity !== undefined) relationToWorld.quantity = np.quantity;
+  if (np.possessor) {
+    // A possessive determiner ("my dog") isn't just a definiteness marker —
+    // it introduces a referent of its own (the possessor), so it's nested
+    // here the same way any other referent is shaped elsewhere.
+    const possessorWorld = { person: np.possessor.person, count: np.possessor.count };
+    if (np.possessor.gender) possessorWorld.gender = np.possessor.gender;
+    relationToWorld.possessor = { referent: 'PRONOUN', relationToWorld: possessorWorld };
+  }
   if (np.modifiers && np.modifiers.length > 0) {
     relationToWorld.modifiers = np.modifiers;
   }

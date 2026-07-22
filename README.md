@@ -15,9 +15,11 @@ thematic roles (agent, theme, source, goal, recipient, experiencer, ...).
 
 The `-<code>` flag selects a language data file from `data/languages/<code>.json`.
 Currently only `en` (English) is implemented, covering the full Swadesh
-207-word list (adapted to fit the grammar the parser supports — see below)
-plus a handful of extra common nouns (animals, foods, tools) for good
-measure: 526 lexicon entries, 59 verbs/actions in all.
+207-word list (adapted to fit the grammar the parser supports — see below),
+a broad set of closed-class vocabulary (possessive determiners, demonstratives,
+quantifiers, numerals, prepositions), plus a handful of extra common nouns
+(animals, foods, tools) for good measure: 556 lexicon entries, 59
+verbs/actions in all.
 
 ## Architecture
 
@@ -26,16 +28,21 @@ measure: 526 lexicon entries, 59 verbs/actions in all.
   language) is hardcoded here; every piece of linguistic knowledge is read
   out of a language data file.
   - `tokenizer.js` — splits raw text into words.
-  - `lexer.js` — looks each word up in the language's lexicon.
+  - `lexer.js` — looks each word up in the language's lexicon, then resolves
+    words that are ambiguous between two parts of speech (e.g. English "her":
+    determiner in "her dog", pronoun in "I see her") using one generic
+    lookahead rule — see "Notable quirks" below.
   - `verbGroup.js` — resolves a run of auxiliary + negation + main verb
     tokens into tense/aspect/mood/polarity, based on generic auxiliary
     lemmas (`be`/`have`/`will`/`do`) rather than English-specific spelling.
   - `chunker.js` — a generic phrase grammar (`NP := DET? NUM? ADJ* (N|PRON)`,
     `PP := ADP NP`) that groups tokens into noun phrases and adposition
     phrases. Determiners cover definite/indefinite articles, demonstratives
-    (with a proximal/distal `distance`), and quantifiers (`all`/`many`/
-    `some`/`few`/`other`); `NUM` covers cardinal numbers 1-5, which set an
-    explicit `quantity` on the referent.
+    (with a proximal/distal `distance`), quantifiers (`all`/`many`/`some`/
+    `few`/`other`/`each`/`every`/`any`/`no`/`both`/`either`/`neither`/
+    `several`), and possessives (`my`/`your`/`his`/`her`/`its`/`our`/`their`,
+    which attach a `possessor` referent to the noun phrase); `NUM` covers
+    cardinal numbers 1-5, which set an explicit `quantity` on the referent.
   - `mapper.js` — the semantic core. Resolves verb polysemy (e.g. English
     "run" is either `RUN_MOTION` or `RUN_EXERCISE` depending on whether a
     goal is present), links subject/object/oblique phrases to thematic
@@ -69,8 +76,24 @@ measure: 526 lexicon entries, 59 verbs/actions in all.
   but `recipient` for transfer verbs ("give gold to you"), disambiguated by
   which role the governing action actually defines. Likewise "with"
   resolves to `instrument` ("cut with a knife") or `comitative` ("fight
-  with the wolf"), and "at" resolves to `location` or `target` ("laugh at
-  you"), by the same mechanism.
+  with the wolf"), "at" resolves to `location` or `target` ("laugh at
+  you"), and "around" resolves to `path` on a motion verb ("run around the
+  tree") or `location` on a stative one ("sit around the fire") — all by
+  the same generic mechanism: try each candidate role the preposition could
+  mean, and use whichever one the governing action actually defines.
+- **POS ambiguity resolved by lookahead**: English "her" is a possessive
+  determiner in "her dog" but a personal pronoun in "I see her" — the exact
+  same word form. `lexer.js` resolves this generically (not with an
+  English-specific rule): if an adjective or noun follows, the word is
+  introducing a noun phrase (determiner reading); otherwise it's standing in
+  for one on its own (pronoun reading). `his`/`its`/`your`/`our`/`their`
+  don't need this because English happens not to reuse those forms as
+  object pronouns, so they're just modeled as plain possessive determiners.
+- **Possessors as referents**: a possessive determiner doesn't just mark a
+  noun phrase as definite — "my dog" introduces a second referent (the
+  possessor). `relationToWorld.possessor` is nested as a full
+  `{ referent, relationToWorld }` object, the same shape as any other
+  referent, rather than a flattened feature.
 - **Non-agentive subjects**: unaccusative verbs like `die`, `fall`, `float`,
   `flow`, `freeze`, and `swell` link their subject to a `theme` role rather
   than `agent`, since dying/falling/freezing aren't volitional acts — the

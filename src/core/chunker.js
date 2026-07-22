@@ -99,6 +99,7 @@ function buildNP(det, num, adjs, head) {
     definiteness: det ? det.definiteness : 'unspecified',
     distance: det ? det.distance : undefined,
     quantifier: det ? det.quantifier : undefined,
+    possessor: det ? det.possessor : undefined,
     quantity: num ? num.value : undefined,
     count: num ? (num.value === 1 ? 'singular' : 'plural') : head.count || 'singular',
     modifiers: adjs.map((a) => a.concept),
