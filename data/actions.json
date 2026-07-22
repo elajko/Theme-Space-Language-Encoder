@@ -1,0 +1,850 @@
+{
+  "SLEEP": {
+    "description": "To be in a state of sleep.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      }
+    ]
+  },
+  "EAT": {
+    "description": "To consume food. English 'eat' allows a covert object, conventionally understood as food.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true,
+        "covertDefault": "FOOD"
+      }
+    ]
+  },
+  "STEAL": {
+    "description": "An event with a stealer, a thing stolen, and a party stolen from. Languages differ in which of these surface, and which surfaces as the direct object (compare English 'steal' vs 'rob').",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "source",
+        "optional": true
+      }
+    ]
+  },
+  "GIVE": {
+    "description": "A transfer of possession from an agent to a recipient.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "recipient",
+        "optional": true
+      }
+    ]
+  },
+  "SEE": {
+    "description": "Visual perception. The subject is an experiencer, not an agent, since seeing is not (necessarily) volitional.",
+    "roles": [
+      {
+        "theme": "experiencer",
+        "optional": false
+      },
+      {
+        "theme": "stimulus",
+        "optional": true
+      }
+    ]
+  },
+  "SIT": {
+    "description": "To be in or assume a seated position, optionally located somewhere.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "location",
+        "optional": true
+      }
+    ]
+  },
+  "RUN_MOTION": {
+    "description": "To move (typically fast, on foot) from a source, along a path, or to a goal.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "goal",
+        "optional": true
+      },
+      {
+        "theme": "source",
+        "optional": true
+      }
+    ]
+  },
+  "RUN_EXERCISE": {
+    "description": "To engage in running as an activity/exercise, with no particular destination in mind.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      }
+    ]
+  },
+  "WALK": {
+    "description": "To move on foot at an ordinary pace, optionally from a source or to a goal.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "goal",
+        "optional": true
+      },
+      {
+        "theme": "source",
+        "optional": true
+      }
+    ]
+  },
+  "DRINK": {
+    "description": "To ingest a liquid. Conventionally understood as water when the object is covert.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true,
+        "covertDefault": "WATER"
+      }
+    ]
+  },
+  "BITE": {
+    "description": "To grip or cut with the teeth.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      }
+    ]
+  },
+  "SUCK": {
+    "description": "To draw liquid or air into the mouth by contracting the lip/cheek muscles.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      }
+    ]
+  },
+  "SPIT": {
+    "description": "To eject saliva or an object from the mouth.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      }
+    ]
+  },
+  "VOMIT": {
+    "description": "To expel stomach contents through the mouth.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      }
+    ]
+  },
+  "BLOW": {
+    "description": "To expel air, conventionally understood as air itself when the object is covert.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true,
+        "covertDefault": "AIR"
+      }
+    ]
+  },
+  "BREATHE": {
+    "description": "To draw air into and expel it from the lungs. Conventionally understood as air when covert.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true,
+        "covertDefault": "AIR"
+      }
+    ]
+  },
+  "LAUGH": {
+    "description": "To make the sounds and movements expressing amusement, optionally directed at a target.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "target",
+        "optional": true
+      }
+    ]
+  },
+  "HEAR": {
+    "description": "Auditory perception. The subject is an experiencer, not an agent.",
+    "roles": [
+      {
+        "theme": "experiencer",
+        "optional": false
+      },
+      {
+        "theme": "stimulus",
+        "optional": true
+      }
+    ]
+  },
+  "KNOW": {
+    "description": "To hold something as a fact or be acquainted with it. The subject is an experiencer.",
+    "roles": [
+      {
+        "theme": "experiencer",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      }
+    ]
+  },
+  "THINK": {
+    "description": "To engage in a cognitive process about some content. The subject is an experiencer.",
+    "roles": [
+      {
+        "theme": "experiencer",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      }
+    ]
+  },
+  "SMELL": {
+    "description": "Olfactory perception. The subject is an experiencer, not an agent.",
+    "roles": [
+      {
+        "theme": "experiencer",
+        "optional": false
+      },
+      {
+        "theme": "stimulus",
+        "optional": true
+      }
+    ]
+  },
+  "FEAR": {
+    "description": "To be afraid of something. The subject is an experiencer, not an agent.",
+    "roles": [
+      {
+        "theme": "experiencer",
+        "optional": false
+      },
+      {
+        "theme": "stimulus",
+        "optional": true
+      }
+    ]
+  },
+  "LIVE": {
+    "description": "To be alive, or to reside somewhere.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "location",
+        "optional": true
+      }
+    ]
+  },
+  "DIE": {
+    "description": "To cease to be alive. Not volitional, so the subject is a theme, not an agent.",
+    "roles": [
+      {
+        "theme": "theme",
+        "optional": false
+      }
+    ]
+  },
+  "KILL": {
+    "description": "To cause the death of a referent.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      }
+    ]
+  },
+  "FIGHT": {
+    "description": "To engage in physical or verbal combat, optionally with a counterpart.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "comitative",
+        "optional": true
+      }
+    ]
+  },
+  "HUNT": {
+    "description": "To pursue and try to catch prey. Conventionally understood as game when the object is covert.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true,
+        "covertDefault": "GAME"
+      }
+    ]
+  },
+  "HIT": {
+    "description": "To strike a referent, optionally with an instrument.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "instrument",
+        "optional": true
+      }
+    ]
+  },
+  "CUT": {
+    "description": "To sever or wound with a sharp instrument.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "instrument",
+        "optional": true
+      }
+    ]
+  },
+  "SPLIT": {
+    "description": "To divide a referent into parts, optionally with an instrument.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "instrument",
+        "optional": true
+      }
+    ]
+  },
+  "STAB": {
+    "description": "To pierce a referent with a pointed instrument.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "instrument",
+        "optional": true
+      }
+    ]
+  },
+  "SCRATCH": {
+    "description": "To rub or mark a surface with something sharp.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "instrument",
+        "optional": true
+      }
+    ]
+  },
+  "DIG": {
+    "description": "To excavate, optionally with a tool.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "instrument",
+        "optional": true
+      }
+    ]
+  },
+  "SWIM": {
+    "description": "To move through water under one's own power.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "goal",
+        "optional": true
+      },
+      {
+        "theme": "source",
+        "optional": true
+      }
+    ]
+  },
+  "FLY": {
+    "description": "To move through the air under one's own power.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "goal",
+        "optional": true
+      },
+      {
+        "theme": "source",
+        "optional": true
+      }
+    ]
+  },
+  "COME": {
+    "description": "To move toward the speaker's reference point.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "goal",
+        "optional": true
+      },
+      {
+        "theme": "source",
+        "optional": true
+      }
+    ]
+  },
+  "LIE_DOWN": {
+    "description": "To be in, or assume, a horizontal resting position somewhere.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "location",
+        "optional": true
+      }
+    ]
+  },
+  "STAND": {
+    "description": "To be in, or assume, an upright position somewhere.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "location",
+        "optional": true
+      }
+    ]
+  },
+  "TURN": {
+    "description": "To rotate or change orientation (intransitive sense only, no object).",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      }
+    ]
+  },
+  "FALL": {
+    "description": "To move downward under gravity, not volitionally, so the subject is a theme.",
+    "roles": [
+      {
+        "theme": "theme",
+        "optional": false
+      },
+      {
+        "theme": "source",
+        "optional": true
+      },
+      {
+        "theme": "goal",
+        "optional": true
+      }
+    ]
+  },
+  "HOLD": {
+    "description": "To grip or support a referent.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      }
+    ]
+  },
+  "SQUEEZE": {
+    "description": "To apply pressure to a referent from multiple sides, optionally with an instrument.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "instrument",
+        "optional": true
+      }
+    ]
+  },
+  "RUB": {
+    "description": "To move something back and forth against a surface, optionally with an instrument.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "instrument",
+        "optional": true
+      }
+    ]
+  },
+  "WASH": {
+    "description": "To clean with a liquid, optionally with an instrument.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "instrument",
+        "optional": true
+      }
+    ]
+  },
+  "WIPE": {
+    "description": "To clean or dry by rubbing, optionally with an instrument.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "instrument",
+        "optional": true
+      }
+    ]
+  },
+  "PULL": {
+    "description": "To apply force toward oneself, optionally toward a goal.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "goal",
+        "optional": true
+      }
+    ]
+  },
+  "PUSH": {
+    "description": "To apply force away from oneself, optionally toward a goal.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "goal",
+        "optional": true
+      }
+    ]
+  },
+  "THROW": {
+    "description": "To propel a referent through the air, optionally to a recipient.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "recipient",
+        "optional": true
+      }
+    ]
+  },
+  "TIE": {
+    "description": "To fasten with something flexible, optionally to a goal referent.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "goal",
+        "optional": true
+      }
+    ]
+  },
+  "SEW": {
+    "description": "To join with needle and thread, optionally with an instrument.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "instrument",
+        "optional": true
+      }
+    ]
+  },
+  "COUNT": {
+    "description": "To determine the number of a set of referents.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      }
+    ]
+  },
+  "SAY": {
+    "description": "To utter something, optionally to a recipient.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      },
+      {
+        "theme": "recipient",
+        "optional": true
+      }
+    ]
+  },
+  "SING": {
+    "description": "To produce music with the voice.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      }
+    ]
+  },
+  "PLAY": {
+    "description": "To engage in an activity for enjoyment.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      }
+    ]
+  },
+  "FLOAT": {
+    "description": "To rest on the surface of a liquid without sinking. Not volitional, so the subject is a theme.",
+    "roles": [
+      {
+        "theme": "theme",
+        "optional": false
+      },
+      {
+        "theme": "location",
+        "optional": true
+      }
+    ]
+  },
+  "FLOW": {
+    "description": "To move steadily in a current, as a liquid. Not volitional, so the subject is a theme.",
+    "roles": [
+      {
+        "theme": "theme",
+        "optional": false
+      },
+      {
+        "theme": "goal",
+        "optional": true
+      },
+      {
+        "theme": "source",
+        "optional": true
+      }
+    ]
+  },
+  "FREEZE": {
+    "description": "To turn solid from cold. Not volitional, so the subject is a theme.",
+    "roles": [
+      {
+        "theme": "theme",
+        "optional": false
+      }
+    ]
+  },
+  "SWELL": {
+    "description": "To increase in size/volume, as from swelling. Not volitional, so the subject is a theme.",
+    "roles": [
+      {
+        "theme": "theme",
+        "optional": false
+      }
+    ]
+  },
+  "BURN": {
+    "description": "To be consumed by, or consume with, fire. Modeled here only in its agentive/transitive sense (an agent burning a theme), not the inchoative 'the wood burns by itself' sense.",
+    "roles": [
+      {
+        "theme": "agent",
+        "optional": false
+      },
+      {
+        "theme": "theme",
+        "optional": true
+      }
+    ]
+  }
+}

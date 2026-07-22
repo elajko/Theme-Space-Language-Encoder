@@ -1,0 +1,3416 @@
+{
+  "code": "en",
+  "name": "English",
+  "lexicon": {
+    "i": {
+      "pos": "PRON",
+      "person": "1st",
+      "count": "singular"
+    },
+    "me": {
+      "pos": "PRON",
+      "person": "1st",
+      "count": "singular"
+    },
+    "we": {
+      "pos": "PRON",
+      "person": "1st",
+      "count": "plural"
+    },
+    "us": {
+      "pos": "PRON",
+      "person": "1st",
+      "count": "plural"
+    },
+    "you": {
+      "pos": "PRON",
+      "person": "2nd",
+      "count": "singular"
+    },
+    "he": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "gender": "masculine"
+    },
+    "him": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "gender": "masculine"
+    },
+    "she": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "gender": "feminine"
+    },
+    "her": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "gender": "feminine"
+    },
+    "it": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "gender": "neuter"
+    },
+    "they": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "plural"
+    },
+    "them": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "plural"
+    },
+    "the": {
+      "pos": "DET",
+      "definiteness": "definite"
+    },
+    "a": {
+      "pos": "DET",
+      "definiteness": "indefinite"
+    },
+    "an": {
+      "pos": "DET",
+      "definiteness": "indefinite"
+    },
+    "this": {
+      "pos": "DET",
+      "definiteness": "demonstrative",
+      "distance": "proximal"
+    },
+    "that": {
+      "pos": "DET",
+      "definiteness": "demonstrative",
+      "distance": "distal"
+    },
+    "all": {
+      "pos": "DET",
+      "quantifier": "ALL"
+    },
+    "many": {
+      "pos": "DET",
+      "quantifier": "MANY"
+    },
+    "some": {
+      "pos": "DET",
+      "quantifier": "SOME"
+    },
+    "few": {
+      "pos": "DET",
+      "quantifier": "FEW"
+    },
+    "other": {
+      "pos": "DET",
+      "quantifier": "OTHER"
+    },
+    "one": {
+      "pos": "NUM",
+      "value": 1
+    },
+    "two": {
+      "pos": "NUM",
+      "value": 2
+    },
+    "three": {
+      "pos": "NUM",
+      "value": 3
+    },
+    "four": {
+      "pos": "NUM",
+      "value": 4
+    },
+    "five": {
+      "pos": "NUM",
+      "value": 5
+    },
+    "not": {
+      "pos": "NEG"
+    },
+    "red": {
+      "pos": "ADJ",
+      "concept": "RED"
+    },
+    "big": {
+      "pos": "ADJ",
+      "concept": "BIG"
+    },
+    "small": {
+      "pos": "ADJ",
+      "concept": "SMALL"
+    },
+    "old": {
+      "pos": "ADJ",
+      "concept": "OLD"
+    },
+    "new": {
+      "pos": "ADJ",
+      "concept": "NEW"
+    },
+    "good": {
+      "pos": "ADJ",
+      "concept": "GOOD"
+    },
+    "bad": {
+      "pos": "ADJ",
+      "concept": "BAD"
+    },
+    "rotten": {
+      "pos": "ADJ",
+      "concept": "ROTTEN"
+    },
+    "dirty": {
+      "pos": "ADJ",
+      "concept": "DIRTY"
+    },
+    "straight": {
+      "pos": "ADJ",
+      "concept": "STRAIGHT"
+    },
+    "round": {
+      "pos": "ADJ",
+      "concept": "ROUND"
+    },
+    "sharp": {
+      "pos": "ADJ",
+      "concept": "SHARP"
+    },
+    "dull": {
+      "pos": "ADJ",
+      "concept": "DULL"
+    },
+    "smooth": {
+      "pos": "ADJ",
+      "concept": "SMOOTH"
+    },
+    "wet": {
+      "pos": "ADJ",
+      "concept": "WET"
+    },
+    "dry": {
+      "pos": "ADJ",
+      "concept": "DRY"
+    },
+    "correct": {
+      "pos": "ADJ",
+      "concept": "CORRECT"
+    },
+    "near": {
+      "pos": "ADJ",
+      "concept": "NEAR"
+    },
+    "far": {
+      "pos": "ADJ",
+      "concept": "FAR"
+    },
+    "right": {
+      "pos": "ADJ",
+      "concept": "RIGHT"
+    },
+    "left": {
+      "pos": "ADJ",
+      "concept": "LEFT"
+    },
+    "green": {
+      "pos": "ADJ",
+      "concept": "GREEN"
+    },
+    "yellow": {
+      "pos": "ADJ",
+      "concept": "YELLOW"
+    },
+    "white": {
+      "pos": "ADJ",
+      "concept": "WHITE"
+    },
+    "black": {
+      "pos": "ADJ",
+      "concept": "BLACK"
+    },
+    "warm": {
+      "pos": "ADJ",
+      "concept": "WARM"
+    },
+    "cold": {
+      "pos": "ADJ",
+      "concept": "COLD"
+    },
+    "full": {
+      "pos": "ADJ",
+      "concept": "FULL"
+    },
+    "long": {
+      "pos": "ADJ",
+      "concept": "LONG"
+    },
+    "wide": {
+      "pos": "ADJ",
+      "concept": "WIDE"
+    },
+    "thick": {
+      "pos": "ADJ",
+      "concept": "THICK"
+    },
+    "heavy": {
+      "pos": "ADJ",
+      "concept": "HEAVY"
+    },
+    "short": {
+      "pos": "ADJ",
+      "concept": "SHORT"
+    },
+    "narrow": {
+      "pos": "ADJ",
+      "concept": "NARROW"
+    },
+    "thin": {
+      "pos": "ADJ",
+      "concept": "THIN"
+    },
+    "woman": {
+      "pos": "N",
+      "concept": "WOMAN",
+      "count": "singular"
+    },
+    "women": {
+      "pos": "N",
+      "concept": "WOMAN",
+      "count": "plural"
+    },
+    "man": {
+      "pos": "N",
+      "concept": "MAN",
+      "count": "singular"
+    },
+    "men": {
+      "pos": "N",
+      "concept": "MAN",
+      "count": "plural"
+    },
+    "child": {
+      "pos": "N",
+      "concept": "CHILD",
+      "count": "singular"
+    },
+    "children": {
+      "pos": "N",
+      "concept": "CHILD",
+      "count": "plural"
+    },
+    "wife": {
+      "pos": "N",
+      "concept": "WIFE",
+      "count": "singular"
+    },
+    "wives": {
+      "pos": "N",
+      "concept": "WIFE",
+      "count": "plural"
+    },
+    "husband": {
+      "pos": "N",
+      "concept": "HUSBAND",
+      "count": "singular"
+    },
+    "husbands": {
+      "pos": "N",
+      "concept": "HUSBAND",
+      "count": "plural"
+    },
+    "mother": {
+      "pos": "N",
+      "concept": "MOTHER",
+      "count": "singular"
+    },
+    "mothers": {
+      "pos": "N",
+      "concept": "MOTHER",
+      "count": "plural"
+    },
+    "father": {
+      "pos": "N",
+      "concept": "FATHER",
+      "count": "singular"
+    },
+    "fathers": {
+      "pos": "N",
+      "concept": "FATHER",
+      "count": "plural"
+    },
+    "animal": {
+      "pos": "N",
+      "concept": "ANIMAL",
+      "count": "singular"
+    },
+    "animals": {
+      "pos": "N",
+      "concept": "ANIMAL",
+      "count": "plural"
+    },
+    "fish": {
+      "pos": "N",
+      "concept": "FISH",
+      "count": "singular"
+    },
+    "bird": {
+      "pos": "N",
+      "concept": "BIRD",
+      "count": "singular"
+    },
+    "birds": {
+      "pos": "N",
+      "concept": "BIRD",
+      "count": "plural"
+    },
+    "dog": {
+      "pos": "N",
+      "concept": "DOG",
+      "count": "singular"
+    },
+    "dogs": {
+      "pos": "N",
+      "concept": "DOG",
+      "count": "plural"
+    },
+    "louse": {
+      "pos": "N",
+      "concept": "LOUSE",
+      "count": "singular"
+    },
+    "lice": {
+      "pos": "N",
+      "concept": "LOUSE",
+      "count": "plural"
+    },
+    "snake": {
+      "pos": "N",
+      "concept": "SNAKE",
+      "count": "singular"
+    },
+    "snakes": {
+      "pos": "N",
+      "concept": "SNAKE",
+      "count": "plural"
+    },
+    "worm": {
+      "pos": "N",
+      "concept": "WORM",
+      "count": "singular"
+    },
+    "worms": {
+      "pos": "N",
+      "concept": "WORM",
+      "count": "plural"
+    },
+    "tree": {
+      "pos": "N",
+      "concept": "TREE",
+      "count": "singular"
+    },
+    "trees": {
+      "pos": "N",
+      "concept": "TREE",
+      "count": "plural"
+    },
+    "forest": {
+      "pos": "N",
+      "concept": "FOREST",
+      "count": "singular"
+    },
+    "forests": {
+      "pos": "N",
+      "concept": "FOREST",
+      "count": "plural"
+    },
+    "stick": {
+      "pos": "N",
+      "concept": "STICK",
+      "count": "singular"
+    },
+    "sticks": {
+      "pos": "N",
+      "concept": "STICK",
+      "count": "plural"
+    },
+    "fruit": {
+      "pos": "N",
+      "concept": "FRUIT",
+      "count": "singular"
+    },
+    "fruits": {
+      "pos": "N",
+      "concept": "FRUIT",
+      "count": "plural"
+    },
+    "seed": {
+      "pos": "N",
+      "concept": "SEED",
+      "count": "singular"
+    },
+    "seeds": {
+      "pos": "N",
+      "concept": "SEED",
+      "count": "plural"
+    },
+    "leaf": {
+      "pos": "N",
+      "concept": "LEAF",
+      "count": "singular"
+    },
+    "leaves": {
+      "pos": "N",
+      "concept": "LEAF",
+      "count": "plural"
+    },
+    "root": {
+      "pos": "N",
+      "concept": "ROOT",
+      "count": "singular"
+    },
+    "roots": {
+      "pos": "N",
+      "concept": "ROOT",
+      "count": "plural"
+    },
+    "bark": {
+      "pos": "N",
+      "concept": "BARK",
+      "count": "singular"
+    },
+    "flower": {
+      "pos": "N",
+      "concept": "FLOWER",
+      "count": "singular"
+    },
+    "flowers": {
+      "pos": "N",
+      "concept": "FLOWER",
+      "count": "plural"
+    },
+    "grass": {
+      "pos": "N",
+      "concept": "GRASS",
+      "count": "singular"
+    },
+    "rope": {
+      "pos": "N",
+      "concept": "ROPE",
+      "count": "singular"
+    },
+    "ropes": {
+      "pos": "N",
+      "concept": "ROPE",
+      "count": "plural"
+    },
+    "skin": {
+      "pos": "N",
+      "concept": "SKIN",
+      "count": "singular"
+    },
+    "meat": {
+      "pos": "N",
+      "concept": "MEAT",
+      "count": "singular"
+    },
+    "blood": {
+      "pos": "N",
+      "concept": "BLOOD",
+      "count": "singular"
+    },
+    "bone": {
+      "pos": "N",
+      "concept": "BONE",
+      "count": "singular"
+    },
+    "bones": {
+      "pos": "N",
+      "concept": "BONE",
+      "count": "plural"
+    },
+    "fat": {
+      "pos": "N",
+      "concept": "FAT",
+      "count": "singular"
+    },
+    "egg": {
+      "pos": "N",
+      "concept": "EGG",
+      "count": "singular"
+    },
+    "eggs": {
+      "pos": "N",
+      "concept": "EGG",
+      "count": "plural"
+    },
+    "horn": {
+      "pos": "N",
+      "concept": "HORN",
+      "count": "singular"
+    },
+    "horns": {
+      "pos": "N",
+      "concept": "HORN",
+      "count": "plural"
+    },
+    "tail": {
+      "pos": "N",
+      "concept": "TAIL",
+      "count": "singular"
+    },
+    "tails": {
+      "pos": "N",
+      "concept": "TAIL",
+      "count": "plural"
+    },
+    "feather": {
+      "pos": "N",
+      "concept": "FEATHER",
+      "count": "singular"
+    },
+    "feathers": {
+      "pos": "N",
+      "concept": "FEATHER",
+      "count": "plural"
+    },
+    "hair": {
+      "pos": "N",
+      "concept": "HAIR",
+      "count": "singular"
+    },
+    "head": {
+      "pos": "N",
+      "concept": "HEAD",
+      "count": "singular"
+    },
+    "heads": {
+      "pos": "N",
+      "concept": "HEAD",
+      "count": "plural"
+    },
+    "ear": {
+      "pos": "N",
+      "concept": "EAR",
+      "count": "singular"
+    },
+    "ears": {
+      "pos": "N",
+      "concept": "EAR",
+      "count": "plural"
+    },
+    "eye": {
+      "pos": "N",
+      "concept": "EYE",
+      "count": "singular"
+    },
+    "eyes": {
+      "pos": "N",
+      "concept": "EYE",
+      "count": "plural"
+    },
+    "nose": {
+      "pos": "N",
+      "concept": "NOSE",
+      "count": "singular"
+    },
+    "noses": {
+      "pos": "N",
+      "concept": "NOSE",
+      "count": "plural"
+    },
+    "mouth": {
+      "pos": "N",
+      "concept": "MOUTH",
+      "count": "singular"
+    },
+    "mouths": {
+      "pos": "N",
+      "concept": "MOUTH",
+      "count": "plural"
+    },
+    "tooth": {
+      "pos": "N",
+      "concept": "TOOTH",
+      "count": "singular"
+    },
+    "teeth": {
+      "pos": "N",
+      "concept": "TOOTH",
+      "count": "plural"
+    },
+    "tongue": {
+      "pos": "N",
+      "concept": "TONGUE",
+      "count": "singular"
+    },
+    "tongues": {
+      "pos": "N",
+      "concept": "TONGUE",
+      "count": "plural"
+    },
+    "fingernail": {
+      "pos": "N",
+      "concept": "FINGERNAIL",
+      "count": "singular"
+    },
+    "fingernails": {
+      "pos": "N",
+      "concept": "FINGERNAIL",
+      "count": "plural"
+    },
+    "foot": {
+      "pos": "N",
+      "concept": "FOOT",
+      "count": "singular"
+    },
+    "feet": {
+      "pos": "N",
+      "concept": "FOOT",
+      "count": "plural"
+    },
+    "leg": {
+      "pos": "N",
+      "concept": "LEG",
+      "count": "singular"
+    },
+    "legs": {
+      "pos": "N",
+      "concept": "LEG",
+      "count": "plural"
+    },
+    "knee": {
+      "pos": "N",
+      "concept": "KNEE",
+      "count": "singular"
+    },
+    "knees": {
+      "pos": "N",
+      "concept": "KNEE",
+      "count": "plural"
+    },
+    "hand": {
+      "pos": "N",
+      "concept": "HAND",
+      "count": "singular"
+    },
+    "hands": {
+      "pos": "N",
+      "concept": "HAND",
+      "count": "plural"
+    },
+    "wing": {
+      "pos": "N",
+      "concept": "WING",
+      "count": "singular"
+    },
+    "wings": {
+      "pos": "N",
+      "concept": "WING",
+      "count": "plural"
+    },
+    "belly": {
+      "pos": "N",
+      "concept": "BELLY",
+      "count": "singular"
+    },
+    "bellys": {
+      "pos": "N",
+      "concept": "BELLY",
+      "count": "plural"
+    },
+    "guts": {
+      "pos": "N",
+      "concept": "GUTS",
+      "count": "singular"
+    },
+    "neck": {
+      "pos": "N",
+      "concept": "NECK",
+      "count": "singular"
+    },
+    "necks": {
+      "pos": "N",
+      "concept": "NECK",
+      "count": "plural"
+    },
+    "back": {
+      "pos": "N",
+      "concept": "BACK",
+      "count": "singular"
+    },
+    "backs": {
+      "pos": "N",
+      "concept": "BACK",
+      "count": "plural"
+    },
+    "breast": {
+      "pos": "N",
+      "concept": "BREAST",
+      "count": "singular"
+    },
+    "breasts": {
+      "pos": "N",
+      "concept": "BREAST",
+      "count": "plural"
+    },
+    "heart": {
+      "pos": "N",
+      "concept": "HEART",
+      "count": "singular"
+    },
+    "hearts": {
+      "pos": "N",
+      "concept": "HEART",
+      "count": "plural"
+    },
+    "liver": {
+      "pos": "N",
+      "concept": "LIVER",
+      "count": "singular"
+    },
+    "livers": {
+      "pos": "N",
+      "concept": "LIVER",
+      "count": "plural"
+    },
+    "sun": {
+      "pos": "N",
+      "concept": "SUN",
+      "count": "singular"
+    },
+    "moon": {
+      "pos": "N",
+      "concept": "MOON",
+      "count": "singular"
+    },
+    "star": {
+      "pos": "N",
+      "concept": "STAR",
+      "count": "singular"
+    },
+    "stars": {
+      "pos": "N",
+      "concept": "STAR",
+      "count": "plural"
+    },
+    "water": {
+      "pos": "N",
+      "concept": "WATER",
+      "count": "singular"
+    },
+    "rain": {
+      "pos": "N",
+      "concept": "RAIN",
+      "count": "singular"
+    },
+    "river": {
+      "pos": "N",
+      "concept": "RIVER",
+      "count": "singular"
+    },
+    "rivers": {
+      "pos": "N",
+      "concept": "RIVER",
+      "count": "plural"
+    },
+    "lake": {
+      "pos": "N",
+      "concept": "LAKE",
+      "count": "singular"
+    },
+    "lakes": {
+      "pos": "N",
+      "concept": "LAKE",
+      "count": "plural"
+    },
+    "sea": {
+      "pos": "N",
+      "concept": "SEA",
+      "count": "singular"
+    },
+    "seas": {
+      "pos": "N",
+      "concept": "SEA",
+      "count": "plural"
+    },
+    "salt": {
+      "pos": "N",
+      "concept": "SALT",
+      "count": "singular"
+    },
+    "stone": {
+      "pos": "N",
+      "concept": "STONE",
+      "count": "singular"
+    },
+    "stones": {
+      "pos": "N",
+      "concept": "STONE",
+      "count": "plural"
+    },
+    "sand": {
+      "pos": "N",
+      "concept": "SAND",
+      "count": "singular"
+    },
+    "dust": {
+      "pos": "N",
+      "concept": "DUST",
+      "count": "singular"
+    },
+    "earth": {
+      "pos": "N",
+      "concept": "EARTH",
+      "count": "singular"
+    },
+    "cloud": {
+      "pos": "N",
+      "concept": "CLOUD",
+      "count": "singular"
+    },
+    "clouds": {
+      "pos": "N",
+      "concept": "CLOUD",
+      "count": "plural"
+    },
+    "fog": {
+      "pos": "N",
+      "concept": "FOG",
+      "count": "singular"
+    },
+    "sky": {
+      "pos": "N",
+      "concept": "SKY",
+      "count": "singular"
+    },
+    "wind": {
+      "pos": "N",
+      "concept": "WIND",
+      "count": "singular"
+    },
+    "winds": {
+      "pos": "N",
+      "concept": "WIND",
+      "count": "plural"
+    },
+    "snow": {
+      "pos": "N",
+      "concept": "SNOW",
+      "count": "singular"
+    },
+    "ice": {
+      "pos": "N",
+      "concept": "ICE",
+      "count": "singular"
+    },
+    "smoke": {
+      "pos": "N",
+      "concept": "SMOKE",
+      "count": "singular"
+    },
+    "fire": {
+      "pos": "N",
+      "concept": "FIRE",
+      "count": "singular"
+    },
+    "fires": {
+      "pos": "N",
+      "concept": "FIRE",
+      "count": "plural"
+    },
+    "ash": {
+      "pos": "N",
+      "concept": "ASH",
+      "count": "singular"
+    },
+    "road": {
+      "pos": "N",
+      "concept": "ROAD",
+      "count": "singular"
+    },
+    "roads": {
+      "pos": "N",
+      "concept": "ROAD",
+      "count": "plural"
+    },
+    "mountain": {
+      "pos": "N",
+      "concept": "MOUNTAIN",
+      "count": "singular"
+    },
+    "mountains": {
+      "pos": "N",
+      "concept": "MOUNTAIN",
+      "count": "plural"
+    },
+    "night": {
+      "pos": "N",
+      "concept": "NIGHT",
+      "count": "singular"
+    },
+    "nights": {
+      "pos": "N",
+      "concept": "NIGHT",
+      "count": "plural"
+    },
+    "day": {
+      "pos": "N",
+      "concept": "DAY",
+      "count": "singular"
+    },
+    "days": {
+      "pos": "N",
+      "concept": "DAY",
+      "count": "plural"
+    },
+    "year": {
+      "pos": "N",
+      "concept": "YEAR",
+      "count": "singular"
+    },
+    "years": {
+      "pos": "N",
+      "concept": "YEAR",
+      "count": "plural"
+    },
+    "name": {
+      "pos": "N",
+      "concept": "NAME",
+      "count": "singular"
+    },
+    "names": {
+      "pos": "N",
+      "concept": "NAME",
+      "count": "plural"
+    },
+    "food": {
+      "pos": "N",
+      "concept": "FOOD",
+      "count": "singular"
+    },
+    "air": {
+      "pos": "N",
+      "concept": "AIR",
+      "count": "singular"
+    },
+    "game": {
+      "pos": "N",
+      "concept": "GAME",
+      "count": "singular"
+    },
+    "cat": {
+      "pos": "N",
+      "concept": "CAT",
+      "count": "singular"
+    },
+    "cats": {
+      "pos": "N",
+      "concept": "CAT",
+      "count": "plural"
+    },
+    "horse": {
+      "pos": "N",
+      "concept": "HORSE",
+      "count": "singular"
+    },
+    "horses": {
+      "pos": "N",
+      "concept": "HORSE",
+      "count": "plural"
+    },
+    "cow": {
+      "pos": "N",
+      "concept": "COW",
+      "count": "singular"
+    },
+    "cows": {
+      "pos": "N",
+      "concept": "COW",
+      "count": "plural"
+    },
+    "pig": {
+      "pos": "N",
+      "concept": "PIG",
+      "count": "singular"
+    },
+    "pigs": {
+      "pos": "N",
+      "concept": "PIG",
+      "count": "plural"
+    },
+    "chicken": {
+      "pos": "N",
+      "concept": "CHICKEN",
+      "count": "singular"
+    },
+    "chickens": {
+      "pos": "N",
+      "concept": "CHICKEN",
+      "count": "plural"
+    },
+    "sheep": {
+      "pos": "N",
+      "concept": "SHEEP",
+      "count": "singular"
+    },
+    "goat": {
+      "pos": "N",
+      "concept": "GOAT",
+      "count": "singular"
+    },
+    "goats": {
+      "pos": "N",
+      "concept": "GOAT",
+      "count": "plural"
+    },
+    "mouse": {
+      "pos": "N",
+      "concept": "MOUSE",
+      "count": "singular"
+    },
+    "mice": {
+      "pos": "N",
+      "concept": "MOUSE",
+      "count": "plural"
+    },
+    "rabbit": {
+      "pos": "N",
+      "concept": "RABBIT",
+      "count": "singular"
+    },
+    "rabbits": {
+      "pos": "N",
+      "concept": "RABBIT",
+      "count": "plural"
+    },
+    "bear": {
+      "pos": "N",
+      "concept": "BEAR",
+      "count": "singular"
+    },
+    "bears": {
+      "pos": "N",
+      "concept": "BEAR",
+      "count": "plural"
+    },
+    "wolf": {
+      "pos": "N",
+      "concept": "WOLF",
+      "count": "singular"
+    },
+    "wolves": {
+      "pos": "N",
+      "concept": "WOLF",
+      "count": "plural"
+    },
+    "lion": {
+      "pos": "N",
+      "concept": "LION",
+      "count": "singular"
+    },
+    "lions": {
+      "pos": "N",
+      "concept": "LION",
+      "count": "plural"
+    },
+    "duck": {
+      "pos": "N",
+      "concept": "DUCK",
+      "count": "singular"
+    },
+    "ducks": {
+      "pos": "N",
+      "concept": "DUCK",
+      "count": "plural"
+    },
+    "bread": {
+      "pos": "N",
+      "concept": "BREAD",
+      "count": "singular"
+    },
+    "gold": {
+      "pos": "N",
+      "concept": "GOLD",
+      "count": "singular"
+    },
+    "rice": {
+      "pos": "N",
+      "concept": "RICE",
+      "count": "singular"
+    },
+    "milk": {
+      "pos": "N",
+      "concept": "MILK",
+      "count": "singular"
+    },
+    "cheese": {
+      "pos": "N",
+      "concept": "CHEESE",
+      "count": "singular"
+    },
+    "apple": {
+      "pos": "N",
+      "concept": "APPLE",
+      "count": "singular"
+    },
+    "apples": {
+      "pos": "N",
+      "concept": "APPLE",
+      "count": "plural"
+    },
+    "corn": {
+      "pos": "N",
+      "concept": "CORN",
+      "count": "singular"
+    },
+    "potato": {
+      "pos": "N",
+      "concept": "POTATO",
+      "count": "singular"
+    },
+    "potatoes": {
+      "pos": "N",
+      "concept": "POTATO",
+      "count": "plural"
+    },
+    "honey": {
+      "pos": "N",
+      "concept": "HONEY",
+      "count": "singular"
+    },
+    "store": {
+      "pos": "N",
+      "concept": "STORE",
+      "count": "singular"
+    },
+    "stores": {
+      "pos": "N",
+      "concept": "STORE",
+      "count": "plural"
+    },
+    "house": {
+      "pos": "N",
+      "concept": "HOUSE",
+      "count": "singular"
+    },
+    "houses": {
+      "pos": "N",
+      "concept": "HOUSE",
+      "count": "plural"
+    },
+    "chair": {
+      "pos": "N",
+      "concept": "CHAIR",
+      "count": "singular"
+    },
+    "chairs": {
+      "pos": "N",
+      "concept": "CHAIR",
+      "count": "plural"
+    },
+    "book": {
+      "pos": "N",
+      "concept": "BOOK",
+      "count": "singular"
+    },
+    "books": {
+      "pos": "N",
+      "concept": "BOOK",
+      "count": "plural"
+    },
+    "knife": {
+      "pos": "N",
+      "concept": "KNIFE",
+      "count": "singular"
+    },
+    "knives": {
+      "pos": "N",
+      "concept": "KNIFE",
+      "count": "plural"
+    },
+    "needle": {
+      "pos": "N",
+      "concept": "NEEDLE",
+      "count": "singular"
+    },
+    "needles": {
+      "pos": "N",
+      "concept": "NEEDLE",
+      "count": "plural"
+    },
+    "to": {
+      "pos": "ADP",
+      "roles": [
+        "goal",
+        "recipient"
+      ]
+    },
+    "from": {
+      "pos": "ADP",
+      "roles": [
+        "source"
+      ]
+    },
+    "of": {
+      "pos": "ADP",
+      "roles": [
+        "theme"
+      ]
+    },
+    "in": {
+      "pos": "ADP",
+      "roles": [
+        "location"
+      ]
+    },
+    "on": {
+      "pos": "ADP",
+      "roles": [
+        "location"
+      ]
+    },
+    "at": {
+      "pos": "ADP",
+      "roles": [
+        "location",
+        "target"
+      ]
+    },
+    "with": {
+      "pos": "ADP",
+      "roles": [
+        "instrument",
+        "comitative"
+      ]
+    },
+    "am": {
+      "pos": "AUX",
+      "lemma": "be",
+      "tense": "present"
+    },
+    "is": {
+      "pos": "AUX",
+      "lemma": "be",
+      "tense": "present"
+    },
+    "are": {
+      "pos": "AUX",
+      "lemma": "be",
+      "tense": "present"
+    },
+    "was": {
+      "pos": "AUX",
+      "lemma": "be",
+      "tense": "past"
+    },
+    "were": {
+      "pos": "AUX",
+      "lemma": "be",
+      "tense": "past"
+    },
+    "have": {
+      "pos": "AUX",
+      "lemma": "have",
+      "tense": "present"
+    },
+    "has": {
+      "pos": "AUX",
+      "lemma": "have",
+      "tense": "present"
+    },
+    "had": {
+      "pos": "AUX",
+      "lemma": "have",
+      "tense": "past"
+    },
+    "will": {
+      "pos": "AUX",
+      "lemma": "will",
+      "tense": "future"
+    },
+    "do": {
+      "pos": "AUX",
+      "lemma": "do",
+      "tense": "present"
+    },
+    "does": {
+      "pos": "AUX",
+      "lemma": "do",
+      "tense": "present"
+    },
+    "did": {
+      "pos": "AUX",
+      "lemma": "do",
+      "tense": "past"
+    },
+    "sleep": {
+      "pos": "V",
+      "lemma": "sleep",
+      "tense": "present",
+      "form": "base"
+    },
+    "sleeps": {
+      "pos": "V",
+      "lemma": "sleep",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "slept": {
+      "pos": "V",
+      "lemma": "sleep",
+      "tense": "past",
+      "form": "past"
+    },
+    "sleeping": {
+      "pos": "V",
+      "lemma": "sleep",
+      "form": "presentParticiple"
+    },
+    "eat": {
+      "pos": "V",
+      "lemma": "eat",
+      "tense": "present",
+      "form": "base"
+    },
+    "eats": {
+      "pos": "V",
+      "lemma": "eat",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "ate": {
+      "pos": "V",
+      "lemma": "eat",
+      "tense": "past",
+      "form": "past"
+    },
+    "eating": {
+      "pos": "V",
+      "lemma": "eat",
+      "form": "presentParticiple"
+    },
+    "eaten": {
+      "pos": "V",
+      "lemma": "eat",
+      "form": "pastParticiple"
+    },
+    "steal": {
+      "pos": "V",
+      "lemma": "steal",
+      "tense": "present",
+      "form": "base"
+    },
+    "steals": {
+      "pos": "V",
+      "lemma": "steal",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "stole": {
+      "pos": "V",
+      "lemma": "steal",
+      "tense": "past",
+      "form": "past"
+    },
+    "stealing": {
+      "pos": "V",
+      "lemma": "steal",
+      "form": "presentParticiple"
+    },
+    "stolen": {
+      "pos": "V",
+      "lemma": "steal",
+      "form": "pastParticiple"
+    },
+    "rob": {
+      "pos": "V",
+      "lemma": "rob",
+      "tense": "present",
+      "form": "base"
+    },
+    "robs": {
+      "pos": "V",
+      "lemma": "rob",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "robbed": {
+      "pos": "V",
+      "lemma": "rob",
+      "tense": "past",
+      "form": "past"
+    },
+    "robbing": {
+      "pos": "V",
+      "lemma": "rob",
+      "form": "presentParticiple"
+    },
+    "give": {
+      "pos": "V",
+      "lemma": "give",
+      "tense": "present",
+      "form": "base"
+    },
+    "gives": {
+      "pos": "V",
+      "lemma": "give",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "gave": {
+      "pos": "V",
+      "lemma": "give",
+      "tense": "past",
+      "form": "past"
+    },
+    "giving": {
+      "pos": "V",
+      "lemma": "give",
+      "form": "presentParticiple"
+    },
+    "given": {
+      "pos": "V",
+      "lemma": "give",
+      "form": "pastParticiple"
+    },
+    "see": {
+      "pos": "V",
+      "lemma": "see",
+      "tense": "present",
+      "form": "base"
+    },
+    "sees": {
+      "pos": "V",
+      "lemma": "see",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "saw": {
+      "pos": "V",
+      "lemma": "see",
+      "tense": "past",
+      "form": "past"
+    },
+    "seeing": {
+      "pos": "V",
+      "lemma": "see",
+      "form": "presentParticiple"
+    },
+    "seen": {
+      "pos": "V",
+      "lemma": "see",
+      "form": "pastParticiple"
+    },
+    "sit": {
+      "pos": "V",
+      "lemma": "sit",
+      "tense": "present",
+      "form": "base"
+    },
+    "sits": {
+      "pos": "V",
+      "lemma": "sit",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "sat": {
+      "pos": "V",
+      "lemma": "sit",
+      "tense": "past",
+      "form": "past"
+    },
+    "sitting": {
+      "pos": "V",
+      "lemma": "sit",
+      "form": "presentParticiple"
+    },
+    "run": {
+      "pos": "V",
+      "lemma": "run",
+      "tense": "present",
+      "form": "base"
+    },
+    "runs": {
+      "pos": "V",
+      "lemma": "run",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "ran": {
+      "pos": "V",
+      "lemma": "run",
+      "tense": "past",
+      "form": "past"
+    },
+    "running": {
+      "pos": "V",
+      "lemma": "run",
+      "form": "presentParticiple"
+    },
+    "walk": {
+      "pos": "V",
+      "lemma": "walk",
+      "tense": "present",
+      "form": "base"
+    },
+    "walks": {
+      "pos": "V",
+      "lemma": "walk",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "walked": {
+      "pos": "V",
+      "lemma": "walk",
+      "tense": "past",
+      "form": "past"
+    },
+    "walking": {
+      "pos": "V",
+      "lemma": "walk",
+      "form": "presentParticiple"
+    },
+    "drink": {
+      "pos": "V",
+      "lemma": "drink",
+      "tense": "present",
+      "form": "base"
+    },
+    "drinks": {
+      "pos": "V",
+      "lemma": "drink",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "drank": {
+      "pos": "V",
+      "lemma": "drink",
+      "tense": "past",
+      "form": "past"
+    },
+    "drinking": {
+      "pos": "V",
+      "lemma": "drink",
+      "form": "presentParticiple"
+    },
+    "drunk": {
+      "pos": "V",
+      "lemma": "drink",
+      "form": "pastParticiple"
+    },
+    "bite": {
+      "pos": "V",
+      "lemma": "bite",
+      "tense": "present",
+      "form": "base"
+    },
+    "bites": {
+      "pos": "V",
+      "lemma": "bite",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "bit": {
+      "pos": "V",
+      "lemma": "bite",
+      "tense": "past",
+      "form": "past"
+    },
+    "biting": {
+      "pos": "V",
+      "lemma": "bite",
+      "form": "presentParticiple"
+    },
+    "bitten": {
+      "pos": "V",
+      "lemma": "bite",
+      "form": "pastParticiple"
+    },
+    "suck": {
+      "pos": "V",
+      "lemma": "suck",
+      "tense": "present",
+      "form": "base"
+    },
+    "sucks": {
+      "pos": "V",
+      "lemma": "suck",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "sucked": {
+      "pos": "V",
+      "lemma": "suck",
+      "tense": "past",
+      "form": "past"
+    },
+    "sucking": {
+      "pos": "V",
+      "lemma": "suck",
+      "form": "presentParticiple"
+    },
+    "spit": {
+      "pos": "V",
+      "lemma": "spit",
+      "tense": "present",
+      "form": "base"
+    },
+    "spits": {
+      "pos": "V",
+      "lemma": "spit",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "spat": {
+      "pos": "V",
+      "lemma": "spit",
+      "tense": "past",
+      "form": "past"
+    },
+    "spitting": {
+      "pos": "V",
+      "lemma": "spit",
+      "form": "presentParticiple"
+    },
+    "vomit": {
+      "pos": "V",
+      "lemma": "vomit",
+      "tense": "present",
+      "form": "base"
+    },
+    "vomits": {
+      "pos": "V",
+      "lemma": "vomit",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "vomited": {
+      "pos": "V",
+      "lemma": "vomit",
+      "tense": "past",
+      "form": "past"
+    },
+    "vomiting": {
+      "pos": "V",
+      "lemma": "vomit",
+      "form": "presentParticiple"
+    },
+    "blow": {
+      "pos": "V",
+      "lemma": "blow",
+      "tense": "present",
+      "form": "base"
+    },
+    "blows": {
+      "pos": "V",
+      "lemma": "blow",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "blew": {
+      "pos": "V",
+      "lemma": "blow",
+      "tense": "past",
+      "form": "past"
+    },
+    "blowing": {
+      "pos": "V",
+      "lemma": "blow",
+      "form": "presentParticiple"
+    },
+    "blown": {
+      "pos": "V",
+      "lemma": "blow",
+      "form": "pastParticiple"
+    },
+    "breathe": {
+      "pos": "V",
+      "lemma": "breathe",
+      "tense": "present",
+      "form": "base"
+    },
+    "breathes": {
+      "pos": "V",
+      "lemma": "breathe",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "breathed": {
+      "pos": "V",
+      "lemma": "breathe",
+      "tense": "past",
+      "form": "past"
+    },
+    "breathing": {
+      "pos": "V",
+      "lemma": "breathe",
+      "form": "presentParticiple"
+    },
+    "laugh": {
+      "pos": "V",
+      "lemma": "laugh",
+      "tense": "present",
+      "form": "base"
+    },
+    "laughs": {
+      "pos": "V",
+      "lemma": "laugh",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "laughed": {
+      "pos": "V",
+      "lemma": "laugh",
+      "tense": "past",
+      "form": "past"
+    },
+    "laughing": {
+      "pos": "V",
+      "lemma": "laugh",
+      "form": "presentParticiple"
+    },
+    "hear": {
+      "pos": "V",
+      "lemma": "hear",
+      "tense": "present",
+      "form": "base"
+    },
+    "hears": {
+      "pos": "V",
+      "lemma": "hear",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "heard": {
+      "pos": "V",
+      "lemma": "hear",
+      "tense": "past",
+      "form": "past"
+    },
+    "hearing": {
+      "pos": "V",
+      "lemma": "hear",
+      "form": "presentParticiple"
+    },
+    "know": {
+      "pos": "V",
+      "lemma": "know",
+      "tense": "present",
+      "form": "base"
+    },
+    "knows": {
+      "pos": "V",
+      "lemma": "know",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "knew": {
+      "pos": "V",
+      "lemma": "know",
+      "tense": "past",
+      "form": "past"
+    },
+    "knowing": {
+      "pos": "V",
+      "lemma": "know",
+      "form": "presentParticiple"
+    },
+    "known": {
+      "pos": "V",
+      "lemma": "know",
+      "form": "pastParticiple"
+    },
+    "think": {
+      "pos": "V",
+      "lemma": "think",
+      "tense": "present",
+      "form": "base"
+    },
+    "thinks": {
+      "pos": "V",
+      "lemma": "think",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "thought": {
+      "pos": "V",
+      "lemma": "think",
+      "tense": "past",
+      "form": "past"
+    },
+    "thinking": {
+      "pos": "V",
+      "lemma": "think",
+      "form": "presentParticiple"
+    },
+    "smell": {
+      "pos": "V",
+      "lemma": "smell",
+      "tense": "present",
+      "form": "base"
+    },
+    "smells": {
+      "pos": "V",
+      "lemma": "smell",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "smelled": {
+      "pos": "V",
+      "lemma": "smell",
+      "tense": "past",
+      "form": "past"
+    },
+    "smelling": {
+      "pos": "V",
+      "lemma": "smell",
+      "form": "presentParticiple"
+    },
+    "fear": {
+      "pos": "V",
+      "lemma": "fear",
+      "tense": "present",
+      "form": "base"
+    },
+    "fears": {
+      "pos": "V",
+      "lemma": "fear",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "feared": {
+      "pos": "V",
+      "lemma": "fear",
+      "tense": "past",
+      "form": "past"
+    },
+    "fearing": {
+      "pos": "V",
+      "lemma": "fear",
+      "form": "presentParticiple"
+    },
+    "live": {
+      "pos": "V",
+      "lemma": "live",
+      "tense": "present",
+      "form": "base"
+    },
+    "lives": {
+      "pos": "V",
+      "lemma": "live",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "lived": {
+      "pos": "V",
+      "lemma": "live",
+      "tense": "past",
+      "form": "past"
+    },
+    "living": {
+      "pos": "V",
+      "lemma": "live",
+      "form": "presentParticiple"
+    },
+    "die": {
+      "pos": "V",
+      "lemma": "die",
+      "tense": "present",
+      "form": "base"
+    },
+    "dies": {
+      "pos": "V",
+      "lemma": "die",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "died": {
+      "pos": "V",
+      "lemma": "die",
+      "tense": "past",
+      "form": "past"
+    },
+    "dying": {
+      "pos": "V",
+      "lemma": "die",
+      "form": "presentParticiple"
+    },
+    "kill": {
+      "pos": "V",
+      "lemma": "kill",
+      "tense": "present",
+      "form": "base"
+    },
+    "kills": {
+      "pos": "V",
+      "lemma": "kill",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "killed": {
+      "pos": "V",
+      "lemma": "kill",
+      "tense": "past",
+      "form": "past"
+    },
+    "killing": {
+      "pos": "V",
+      "lemma": "kill",
+      "form": "presentParticiple"
+    },
+    "fight": {
+      "pos": "V",
+      "lemma": "fight",
+      "tense": "present",
+      "form": "base"
+    },
+    "fights": {
+      "pos": "V",
+      "lemma": "fight",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "fought": {
+      "pos": "V",
+      "lemma": "fight",
+      "tense": "past",
+      "form": "past"
+    },
+    "fighting": {
+      "pos": "V",
+      "lemma": "fight",
+      "form": "presentParticiple"
+    },
+    "hunt": {
+      "pos": "V",
+      "lemma": "hunt",
+      "tense": "present",
+      "form": "base"
+    },
+    "hunts": {
+      "pos": "V",
+      "lemma": "hunt",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "hunted": {
+      "pos": "V",
+      "lemma": "hunt",
+      "tense": "past",
+      "form": "past"
+    },
+    "hunting": {
+      "pos": "V",
+      "lemma": "hunt",
+      "form": "presentParticiple"
+    },
+    "hit": {
+      "pos": "V",
+      "lemma": "hit",
+      "tense": "present",
+      "form": "base"
+    },
+    "hits": {
+      "pos": "V",
+      "lemma": "hit",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "hitting": {
+      "pos": "V",
+      "lemma": "hit",
+      "form": "presentParticiple"
+    },
+    "cut": {
+      "pos": "V",
+      "lemma": "cut",
+      "tense": "present",
+      "form": "base"
+    },
+    "cuts": {
+      "pos": "V",
+      "lemma": "cut",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "cutting": {
+      "pos": "V",
+      "lemma": "cut",
+      "form": "presentParticiple"
+    },
+    "split": {
+      "pos": "V",
+      "lemma": "split",
+      "tense": "present",
+      "form": "base"
+    },
+    "splits": {
+      "pos": "V",
+      "lemma": "split",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "splitting": {
+      "pos": "V",
+      "lemma": "split",
+      "form": "presentParticiple"
+    },
+    "stab": {
+      "pos": "V",
+      "lemma": "stab",
+      "tense": "present",
+      "form": "base"
+    },
+    "stabs": {
+      "pos": "V",
+      "lemma": "stab",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "stabbed": {
+      "pos": "V",
+      "lemma": "stab",
+      "tense": "past",
+      "form": "past"
+    },
+    "stabbing": {
+      "pos": "V",
+      "lemma": "stab",
+      "form": "presentParticiple"
+    },
+    "scratch": {
+      "pos": "V",
+      "lemma": "scratch",
+      "tense": "present",
+      "form": "base"
+    },
+    "scratches": {
+      "pos": "V",
+      "lemma": "scratch",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "scratched": {
+      "pos": "V",
+      "lemma": "scratch",
+      "tense": "past",
+      "form": "past"
+    },
+    "scratching": {
+      "pos": "V",
+      "lemma": "scratch",
+      "form": "presentParticiple"
+    },
+    "dig": {
+      "pos": "V",
+      "lemma": "dig",
+      "tense": "present",
+      "form": "base"
+    },
+    "digs": {
+      "pos": "V",
+      "lemma": "dig",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "dug": {
+      "pos": "V",
+      "lemma": "dig",
+      "tense": "past",
+      "form": "past"
+    },
+    "digging": {
+      "pos": "V",
+      "lemma": "dig",
+      "form": "presentParticiple"
+    },
+    "swim": {
+      "pos": "V",
+      "lemma": "swim",
+      "tense": "present",
+      "form": "base"
+    },
+    "swims": {
+      "pos": "V",
+      "lemma": "swim",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "swam": {
+      "pos": "V",
+      "lemma": "swim",
+      "tense": "past",
+      "form": "past"
+    },
+    "swimming": {
+      "pos": "V",
+      "lemma": "swim",
+      "form": "presentParticiple"
+    },
+    "swum": {
+      "pos": "V",
+      "lemma": "swim",
+      "form": "pastParticiple"
+    },
+    "fly": {
+      "pos": "V",
+      "lemma": "fly",
+      "tense": "present",
+      "form": "base"
+    },
+    "flies": {
+      "pos": "V",
+      "lemma": "fly",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "flew": {
+      "pos": "V",
+      "lemma": "fly",
+      "tense": "past",
+      "form": "past"
+    },
+    "flying": {
+      "pos": "V",
+      "lemma": "fly",
+      "form": "presentParticiple"
+    },
+    "flown": {
+      "pos": "V",
+      "lemma": "fly",
+      "form": "pastParticiple"
+    },
+    "come": {
+      "pos": "V",
+      "lemma": "come",
+      "tense": "present",
+      "form": "base"
+    },
+    "comes": {
+      "pos": "V",
+      "lemma": "come",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "came": {
+      "pos": "V",
+      "lemma": "come",
+      "tense": "past",
+      "form": "past"
+    },
+    "coming": {
+      "pos": "V",
+      "lemma": "come",
+      "form": "presentParticiple"
+    },
+    "lie": {
+      "pos": "V",
+      "lemma": "lie",
+      "tense": "present",
+      "form": "base"
+    },
+    "lies": {
+      "pos": "V",
+      "lemma": "lie",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "lay": {
+      "pos": "V",
+      "lemma": "lie",
+      "tense": "past",
+      "form": "past"
+    },
+    "lying": {
+      "pos": "V",
+      "lemma": "lie",
+      "form": "presentParticiple"
+    },
+    "lain": {
+      "pos": "V",
+      "lemma": "lie",
+      "form": "pastParticiple"
+    },
+    "stand": {
+      "pos": "V",
+      "lemma": "stand",
+      "tense": "present",
+      "form": "base"
+    },
+    "stands": {
+      "pos": "V",
+      "lemma": "stand",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "stood": {
+      "pos": "V",
+      "lemma": "stand",
+      "tense": "past",
+      "form": "past"
+    },
+    "standing": {
+      "pos": "V",
+      "lemma": "stand",
+      "form": "presentParticiple"
+    },
+    "turn": {
+      "pos": "V",
+      "lemma": "turn",
+      "tense": "present",
+      "form": "base"
+    },
+    "turns": {
+      "pos": "V",
+      "lemma": "turn",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "turned": {
+      "pos": "V",
+      "lemma": "turn",
+      "tense": "past",
+      "form": "past"
+    },
+    "turning": {
+      "pos": "V",
+      "lemma": "turn",
+      "form": "presentParticiple"
+    },
+    "fall": {
+      "pos": "V",
+      "lemma": "fall",
+      "tense": "present",
+      "form": "base"
+    },
+    "falls": {
+      "pos": "V",
+      "lemma": "fall",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "fell": {
+      "pos": "V",
+      "lemma": "fall",
+      "tense": "past",
+      "form": "past"
+    },
+    "falling": {
+      "pos": "V",
+      "lemma": "fall",
+      "form": "presentParticiple"
+    },
+    "fallen": {
+      "pos": "V",
+      "lemma": "fall",
+      "form": "pastParticiple"
+    },
+    "hold": {
+      "pos": "V",
+      "lemma": "hold",
+      "tense": "present",
+      "form": "base"
+    },
+    "holds": {
+      "pos": "V",
+      "lemma": "hold",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "held": {
+      "pos": "V",
+      "lemma": "hold",
+      "tense": "past",
+      "form": "past"
+    },
+    "holding": {
+      "pos": "V",
+      "lemma": "hold",
+      "form": "presentParticiple"
+    },
+    "squeeze": {
+      "pos": "V",
+      "lemma": "squeeze",
+      "tense": "present",
+      "form": "base"
+    },
+    "squeezes": {
+      "pos": "V",
+      "lemma": "squeeze",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "squeezed": {
+      "pos": "V",
+      "lemma": "squeeze",
+      "tense": "past",
+      "form": "past"
+    },
+    "squeezing": {
+      "pos": "V",
+      "lemma": "squeeze",
+      "form": "presentParticiple"
+    },
+    "rub": {
+      "pos": "V",
+      "lemma": "rub",
+      "tense": "present",
+      "form": "base"
+    },
+    "rubs": {
+      "pos": "V",
+      "lemma": "rub",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "rubbed": {
+      "pos": "V",
+      "lemma": "rub",
+      "tense": "past",
+      "form": "past"
+    },
+    "rubbing": {
+      "pos": "V",
+      "lemma": "rub",
+      "form": "presentParticiple"
+    },
+    "wash": {
+      "pos": "V",
+      "lemma": "wash",
+      "tense": "present",
+      "form": "base"
+    },
+    "washes": {
+      "pos": "V",
+      "lemma": "wash",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "washed": {
+      "pos": "V",
+      "lemma": "wash",
+      "tense": "past",
+      "form": "past"
+    },
+    "washing": {
+      "pos": "V",
+      "lemma": "wash",
+      "form": "presentParticiple"
+    },
+    "wipe": {
+      "pos": "V",
+      "lemma": "wipe",
+      "tense": "present",
+      "form": "base"
+    },
+    "wipes": {
+      "pos": "V",
+      "lemma": "wipe",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "wiped": {
+      "pos": "V",
+      "lemma": "wipe",
+      "tense": "past",
+      "form": "past"
+    },
+    "wiping": {
+      "pos": "V",
+      "lemma": "wipe",
+      "form": "presentParticiple"
+    },
+    "pull": {
+      "pos": "V",
+      "lemma": "pull",
+      "tense": "present",
+      "form": "base"
+    },
+    "pulls": {
+      "pos": "V",
+      "lemma": "pull",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "pulled": {
+      "pos": "V",
+      "lemma": "pull",
+      "tense": "past",
+      "form": "past"
+    },
+    "pulling": {
+      "pos": "V",
+      "lemma": "pull",
+      "form": "presentParticiple"
+    },
+    "push": {
+      "pos": "V",
+      "lemma": "push",
+      "tense": "present",
+      "form": "base"
+    },
+    "pushes": {
+      "pos": "V",
+      "lemma": "push",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "pushed": {
+      "pos": "V",
+      "lemma": "push",
+      "tense": "past",
+      "form": "past"
+    },
+    "pushing": {
+      "pos": "V",
+      "lemma": "push",
+      "form": "presentParticiple"
+    },
+    "throw": {
+      "pos": "V",
+      "lemma": "throw",
+      "tense": "present",
+      "form": "base"
+    },
+    "throws": {
+      "pos": "V",
+      "lemma": "throw",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "threw": {
+      "pos": "V",
+      "lemma": "throw",
+      "tense": "past",
+      "form": "past"
+    },
+    "throwing": {
+      "pos": "V",
+      "lemma": "throw",
+      "form": "presentParticiple"
+    },
+    "thrown": {
+      "pos": "V",
+      "lemma": "throw",
+      "form": "pastParticiple"
+    },
+    "tie": {
+      "pos": "V",
+      "lemma": "tie",
+      "tense": "present",
+      "form": "base"
+    },
+    "ties": {
+      "pos": "V",
+      "lemma": "tie",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "tied": {
+      "pos": "V",
+      "lemma": "tie",
+      "tense": "past",
+      "form": "past"
+    },
+    "tying": {
+      "pos": "V",
+      "lemma": "tie",
+      "form": "presentParticiple"
+    },
+    "sew": {
+      "pos": "V",
+      "lemma": "sew",
+      "tense": "present",
+      "form": "base"
+    },
+    "sews": {
+      "pos": "V",
+      "lemma": "sew",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "sewed": {
+      "pos": "V",
+      "lemma": "sew",
+      "tense": "past",
+      "form": "past"
+    },
+    "sewing": {
+      "pos": "V",
+      "lemma": "sew",
+      "form": "presentParticiple"
+    },
+    "sewn": {
+      "pos": "V",
+      "lemma": "sew",
+      "form": "pastParticiple"
+    },
+    "count": {
+      "pos": "V",
+      "lemma": "count",
+      "tense": "present",
+      "form": "base"
+    },
+    "counts": {
+      "pos": "V",
+      "lemma": "count",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "counted": {
+      "pos": "V",
+      "lemma": "count",
+      "tense": "past",
+      "form": "past"
+    },
+    "counting": {
+      "pos": "V",
+      "lemma": "count",
+      "form": "presentParticiple"
+    },
+    "say": {
+      "pos": "V",
+      "lemma": "say",
+      "tense": "present",
+      "form": "base"
+    },
+    "says": {
+      "pos": "V",
+      "lemma": "say",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "said": {
+      "pos": "V",
+      "lemma": "say",
+      "tense": "past",
+      "form": "past"
+    },
+    "saying": {
+      "pos": "V",
+      "lemma": "say",
+      "form": "presentParticiple"
+    },
+    "sing": {
+      "pos": "V",
+      "lemma": "sing",
+      "tense": "present",
+      "form": "base"
+    },
+    "sings": {
+      "pos": "V",
+      "lemma": "sing",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "sang": {
+      "pos": "V",
+      "lemma": "sing",
+      "tense": "past",
+      "form": "past"
+    },
+    "singing": {
+      "pos": "V",
+      "lemma": "sing",
+      "form": "presentParticiple"
+    },
+    "sung": {
+      "pos": "V",
+      "lemma": "sing",
+      "form": "pastParticiple"
+    },
+    "play": {
+      "pos": "V",
+      "lemma": "play",
+      "tense": "present",
+      "form": "base"
+    },
+    "plays": {
+      "pos": "V",
+      "lemma": "play",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "played": {
+      "pos": "V",
+      "lemma": "play",
+      "tense": "past",
+      "form": "past"
+    },
+    "playing": {
+      "pos": "V",
+      "lemma": "play",
+      "form": "presentParticiple"
+    },
+    "float": {
+      "pos": "V",
+      "lemma": "float",
+      "tense": "present",
+      "form": "base"
+    },
+    "floats": {
+      "pos": "V",
+      "lemma": "float",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "floated": {
+      "pos": "V",
+      "lemma": "float",
+      "tense": "past",
+      "form": "past"
+    },
+    "floating": {
+      "pos": "V",
+      "lemma": "float",
+      "form": "presentParticiple"
+    },
+    "flow": {
+      "pos": "V",
+      "lemma": "flow",
+      "tense": "present",
+      "form": "base"
+    },
+    "flows": {
+      "pos": "V",
+      "lemma": "flow",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "flowed": {
+      "pos": "V",
+      "lemma": "flow",
+      "tense": "past",
+      "form": "past"
+    },
+    "flowing": {
+      "pos": "V",
+      "lemma": "flow",
+      "form": "presentParticiple"
+    },
+    "freeze": {
+      "pos": "V",
+      "lemma": "freeze",
+      "tense": "present",
+      "form": "base"
+    },
+    "freezes": {
+      "pos": "V",
+      "lemma": "freeze",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "froze": {
+      "pos": "V",
+      "lemma": "freeze",
+      "tense": "past",
+      "form": "past"
+    },
+    "freezing": {
+      "pos": "V",
+      "lemma": "freeze",
+      "form": "presentParticiple"
+    },
+    "frozen": {
+      "pos": "V",
+      "lemma": "freeze",
+      "form": "pastParticiple"
+    },
+    "swell": {
+      "pos": "V",
+      "lemma": "swell",
+      "tense": "present",
+      "form": "base"
+    },
+    "swells": {
+      "pos": "V",
+      "lemma": "swell",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "swelled": {
+      "pos": "V",
+      "lemma": "swell",
+      "tense": "past",
+      "form": "past"
+    },
+    "swelling": {
+      "pos": "V",
+      "lemma": "swell",
+      "form": "presentParticiple"
+    },
+    "swollen": {
+      "pos": "V",
+      "lemma": "swell",
+      "form": "pastParticiple"
+    },
+    "burn": {
+      "pos": "V",
+      "lemma": "burn",
+      "tense": "present",
+      "form": "base"
+    },
+    "burns": {
+      "pos": "V",
+      "lemma": "burn",
+      "tense": "present",
+      "form": "3sg"
+    },
+    "burned": {
+      "pos": "V",
+      "lemma": "burn",
+      "tense": "past",
+      "form": "past"
+    },
+    "burning": {
+      "pos": "V",
+      "lemma": "burn",
+      "form": "presentParticiple"
+    }
+  },
+  "verbs": {
+    "sleep": {
+      "senses": [
+        {
+          "action": "SLEEP",
+          "linking": {
+            "subject": "agent"
+          }
+        }
+      ]
+    },
+    "eat": {
+      "senses": [
+        {
+          "action": "EAT",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "steal": {
+      "senses": [
+        {
+          "action": "STEAL",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "rob": {
+      "senses": [
+        {
+          "action": "STEAL",
+          "linking": {
+            "subject": "agent",
+            "object": "source"
+          }
+        }
+      ]
+    },
+    "give": {
+      "senses": [
+        {
+          "action": "GIVE",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "see": {
+      "senses": [
+        {
+          "action": "SEE",
+          "linking": {
+            "subject": "experiencer",
+            "object": "stimulus"
+          }
+        }
+      ]
+    },
+    "sit": {
+      "senses": [
+        {
+          "action": "SIT",
+          "linking": {
+            "subject": "agent"
+          }
+        }
+      ]
+    },
+    "run": {
+      "senses": [
+        {
+          "action": "RUN_MOTION",
+          "linking": {
+            "subject": "agent"
+          },
+          "requiresRoles": [
+            "goal"
+          ]
+        },
+        {
+          "action": "RUN_EXERCISE",
+          "linking": {
+            "subject": "agent"
+          }
+        }
+      ]
+    },
+    "walk": {
+      "senses": [
+        {
+          "action": "WALK",
+          "linking": {
+            "subject": "agent"
+          }
+        }
+      ]
+    },
+    "drink": {
+      "senses": [
+        {
+          "action": "DRINK",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "bite": {
+      "senses": [
+        {
+          "action": "BITE",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "suck": {
+      "senses": [
+        {
+          "action": "SUCK",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "spit": {
+      "senses": [
+        {
+          "action": "SPIT",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "vomit": {
+      "senses": [
+        {
+          "action": "VOMIT",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "blow": {
+      "senses": [
+        {
+          "action": "BLOW",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "breathe": {
+      "senses": [
+        {
+          "action": "BREATHE",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "laugh": {
+      "senses": [
+        {
+          "action": "LAUGH",
+          "linking": {
+            "subject": "agent"
+          }
+        }
+      ]
+    },
+    "hear": {
+      "senses": [
+        {
+          "action": "HEAR",
+          "linking": {
+            "subject": "experiencer",
+            "object": "stimulus"
+          }
+        }
+      ]
+    },
+    "know": {
+      "senses": [
+        {
+          "action": "KNOW",
+          "linking": {
+            "subject": "experiencer",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "think": {
+      "senses": [
+        {
+          "action": "THINK",
+          "linking": {
+            "subject": "experiencer",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "smell": {
+      "senses": [
+        {
+          "action": "SMELL",
+          "linking": {
+            "subject": "experiencer",
+            "object": "stimulus"
+          }
+        }
+      ]
+    },
+    "fear": {
+      "senses": [
+        {
+          "action": "FEAR",
+          "linking": {
+            "subject": "experiencer",
+            "object": "stimulus"
+          }
+        }
+      ]
+    },
+    "live": {
+      "senses": [
+        {
+          "action": "LIVE",
+          "linking": {
+            "subject": "agent"
+          }
+        }
+      ]
+    },
+    "die": {
+      "senses": [
+        {
+          "action": "DIE",
+          "linking": {
+            "subject": "theme"
+          }
+        }
+      ]
+    },
+    "kill": {
+      "senses": [
+        {
+          "action": "KILL",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "fight": {
+      "senses": [
+        {
+          "action": "FIGHT",
+          "linking": {
+            "subject": "agent"
+          }
+        }
+      ]
+    },
+    "hunt": {
+      "senses": [
+        {
+          "action": "HUNT",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "hit": {
+      "senses": [
+        {
+          "action": "HIT",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "cut": {
+      "senses": [
+        {
+          "action": "CUT",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "split": {
+      "senses": [
+        {
+          "action": "SPLIT",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "stab": {
+      "senses": [
+        {
+          "action": "STAB",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "scratch": {
+      "senses": [
+        {
+          "action": "SCRATCH",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "dig": {
+      "senses": [
+        {
+          "action": "DIG",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "swim": {
+      "senses": [
+        {
+          "action": "SWIM",
+          "linking": {
+            "subject": "agent"
+          }
+        }
+      ]
+    },
+    "fly": {
+      "senses": [
+        {
+          "action": "FLY",
+          "linking": {
+            "subject": "agent"
+          }
+        }
+      ]
+    },
+    "come": {
+      "senses": [
+        {
+          "action": "COME",
+          "linking": {
+            "subject": "agent"
+          }
+        }
+      ]
+    },
+    "lie": {
+      "senses": [
+        {
+          "action": "LIE_DOWN",
+          "linking": {
+            "subject": "agent"
+          }
+        }
+      ]
+    },
+    "stand": {
+      "senses": [
+        {
+          "action": "STAND",
+          "linking": {
+            "subject": "agent"
+          }
+        }
+      ]
+    },
+    "turn": {
+      "senses": [
+        {
+          "action": "TURN",
+          "linking": {
+            "subject": "agent"
+          }
+        }
+      ]
+    },
+    "fall": {
+      "senses": [
+        {
+          "action": "FALL",
+          "linking": {
+            "subject": "theme"
+          }
+        }
+      ]
+    },
+    "hold": {
+      "senses": [
+        {
+          "action": "HOLD",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "squeeze": {
+      "senses": [
+        {
+          "action": "SQUEEZE",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "rub": {
+      "senses": [
+        {
+          "action": "RUB",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "wash": {
+      "senses": [
+        {
+          "action": "WASH",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "wipe": {
+      "senses": [
+        {
+          "action": "WIPE",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "pull": {
+      "senses": [
+        {
+          "action": "PULL",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "push": {
+      "senses": [
+        {
+          "action": "PUSH",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "throw": {
+      "senses": [
+        {
+          "action": "THROW",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "tie": {
+      "senses": [
+        {
+          "action": "TIE",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "sew": {
+      "senses": [
+        {
+          "action": "SEW",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "count": {
+      "senses": [
+        {
+          "action": "COUNT",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "say": {
+      "senses": [
+        {
+          "action": "SAY",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "sing": {
+      "senses": [
+        {
+          "action": "SING",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "play": {
+      "senses": [
+        {
+          "action": "PLAY",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    },
+    "float": {
+      "senses": [
+        {
+          "action": "FLOAT",
+          "linking": {
+            "subject": "theme"
+          }
+        }
+      ]
+    },
+    "flow": {
+      "senses": [
+        {
+          "action": "FLOW",
+          "linking": {
+            "subject": "theme"
+          }
+        }
+      ]
+    },
+    "freeze": {
+      "senses": [
+        {
+          "action": "FREEZE",
+          "linking": {
+            "subject": "theme"
+          }
+        }
+      ]
+    },
+    "swell": {
+      "senses": [
+        {
+          "action": "SWELL",
+          "linking": {
+            "subject": "theme"
+          }
+        }
+      ]
+    },
+    "burn": {
+      "senses": [
+        {
+          "action": "BURN",
+          "linking": {
+            "subject": "agent",
+            "object": "theme"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+const { encodeSentence } = require('./src/core/encode');
+
+function parseArgs(argv) {
+  let langCode = null;
+  const rest = [];
+
+  for (const arg of argv) {
+    const flagMatch = arg.match(/^-([a-zA-Z]{2,3})$/);
+    if (flagMatch) {
+      langCode = flagMatch[1].toLowerCase();
+    } else if (arg.startsWith('--lang=')) {
+      langCode = arg.slice('--lang='.length).toLowerCase();
+    } else {
+      rest.push(arg);
+    }
+  }
+
+  return { langCode, sentence: rest.join(' ') };
+}
+
+function main() {
+  const { langCode, sentence } = parseArgs(process.argv.slice(2));
+
+  if (!langCode || !sentence) {
+    console.error('Usage: ./encode -<language-code> "<sentence>"');
+    console.error('Example: ./encode -en "I sleep"');
+    process.exit(1);
+  }
+
+  try {
+    const themeSpace = encodeSentence(sentence, langCode);
+    console.log(JSON.stringify(themeSpace, null, 4));
+  } catch (err) {
+    console.error(`Error: ${err.message}`);
+    process.exit(1);
+  }
+}
+
+main();

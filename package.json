@@ -1,0 +1,12 @@
+{
+  "name": "theme-space-language-encoder",
+  "version": "0.1.0",
+  "description": "Encodes natural-language sentences into a language-agnostic thematic 'theme space' JSON representation.",
+  "private": true,
+  "bin": {
+    "encode": "./encode"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
