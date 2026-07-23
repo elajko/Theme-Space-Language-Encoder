@@ -278,24 +278,72 @@
       "definiteness": "indefinite"
     },
     "this": {
-      "pos": "DET",
-      "definiteness": "demonstrative",
-      "distance": "proximal"
+      "pos": "AMBIG",
+      "readings": [
+        {
+          "pos": "DET",
+          "definiteness": "demonstrative",
+          "distance": "proximal"
+        },
+        {
+          "pos": "PRON",
+          "person": "3rd",
+          "count": "singular",
+          "definiteness": "definite",
+          "distance": "proximal"
+        }
+      ]
     },
     "that": {
-      "pos": "DET",
-      "definiteness": "demonstrative",
-      "distance": "distal"
+      "pos": "AMBIG",
+      "readings": [
+        {
+          "pos": "DET",
+          "definiteness": "demonstrative",
+          "distance": "distal"
+        },
+        {
+          "pos": "PRON",
+          "person": "3rd",
+          "count": "singular",
+          "definiteness": "definite",
+          "distance": "distal"
+        }
+      ]
     },
     "these": {
-      "pos": "DET",
-      "definiteness": "demonstrative",
-      "distance": "proximal"
+      "pos": "AMBIG",
+      "readings": [
+        {
+          "pos": "DET",
+          "definiteness": "demonstrative",
+          "distance": "proximal"
+        },
+        {
+          "pos": "PRON",
+          "person": "3rd",
+          "count": "plural",
+          "definiteness": "definite",
+          "distance": "proximal"
+        }
+      ]
     },
     "those": {
-      "pos": "DET",
-      "definiteness": "demonstrative",
-      "distance": "distal"
+      "pos": "AMBIG",
+      "readings": [
+        {
+          "pos": "DET",
+          "definiteness": "demonstrative",
+          "distance": "distal"
+        },
+        {
+          "pos": "PRON",
+          "person": "3rd",
+          "count": "plural",
+          "definiteness": "definite",
+          "distance": "distal"
+        }
+      ]
     },
     "all": {
       "pos": "DET",
@@ -1564,6 +1612,36 @@
       "concept": "NEEDLE",
       "count": "plural"
     },
+    "doctor": {
+      "pos": "N",
+      "concept": "DOCTOR",
+      "count": "singular"
+    },
+    "doctors": {
+      "pos": "N",
+      "concept": "DOCTOR",
+      "count": "plural"
+    },
+    "king": {
+      "pos": "N",
+      "concept": "KING",
+      "count": "singular"
+    },
+    "kings": {
+      "pos": "N",
+      "concept": "KING",
+      "count": "plural"
+    },
+    "table": {
+      "pos": "N",
+      "concept": "TABLE",
+      "count": "singular"
+    },
+    "tables": {
+      "pos": "N",
+      "concept": "TABLE",
+      "count": "plural"
+    },
     "to": {
       "pos": "ADP",
       "roles": [
@@ -1718,6 +1796,14 @@
       "pos": "AUX",
       "lemma": "be",
       "tense": "past"
+    },
+    "be": {
+      "pos": "AUX",
+      "lemma": "be"
+    },
+    "been": {
+      "pos": "AUX",
+      "lemma": "be"
     },
     "have": {
       "pos": "AUX",

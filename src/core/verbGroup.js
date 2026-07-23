@@ -56,4 +56,35 @@ function resolveVerbGroup(parts) {
   return { lemma, tense, aspect, mood, polarity };
 }
 
-module.exports = { resolveVerbGroup };
+// Resolves tense/aspect/mood/polarity for a copular clause ("is red", "will
+// be a doctor") -- an auxiliary chain with no lexical main verb at all,
+// where "be" itself is the predicate rather than an aspectual auxiliary.
+// Simpler than resolveVerbGroup: there's no do-support (English negates
+// "be" directly: "isn't", never *"doesn't be"), and have+be here always
+// means the perfect of the copula ("has been red"), never have+be+V-ing
+// progressive perfect, since there's no main verb for "be" to be marking
+// progressive aspect on.
+function resolveCopula(parts) {
+  const auxes = parts.filter((p) => p.pos === 'AUX');
+  const polarity = parts.some((p) => p.pos === 'NEG') ? 'negative' : 'affirmative';
+
+  const willAux = auxes.find((a) => a.lemma === 'will');
+  const haveAux = auxes.find((a) => a.lemma === 'have');
+  const beAux = auxes.find((a) => a.lemma === 'be');
+
+  let tense = 'present';
+  let aspect = 'perfective';
+
+  if (willAux) {
+    tense = 'future';
+  } else if (haveAux) {
+    tense = haveAux.tense;
+    aspect = 'perfect';
+  } else if (beAux) {
+    tense = beAux.tense;
+  }
+
+  return { tense, aspect, mood: 'indicative', polarity };
+}
+
+module.exports = { resolveVerbGroup, resolveCopula };

@@ -1,4 +1,4 @@
-const { resolveVerbGroup } = require('./verbGroup');
+const { resolveVerbGroup, resolveCopula } = require('./verbGroup');
 
 // Splits a lexed token stream into: the material before the verb, the verb
 // group itself, and the material after the verb. Assumes a single main
@@ -22,12 +22,50 @@ function chunk(lexTokens) {
   const verbParts = lexTokens.slice(vgStart, vgEnd + 1);
   const before = lexTokens.slice(0, vgStart);
   const after = lexTokens.slice(vgEnd + 1);
-
-  const verbGroup = resolveVerbGroup(verbParts);
   const beforeChunks = chunkNPsAndPPs(before);
-  const afterChunks = chunkNPsAndPPs(after);
 
-  return { beforeChunks, verbGroup, afterChunks };
+  if (verbParts.some((p) => p.pos === 'V')) {
+    const verbGroup = resolveVerbGroup(verbParts);
+    const afterChunks = chunkNPsAndPPs(after);
+    return { beforeChunks, verbGroup, afterChunks };
+  }
+
+  // No lexical main verb — either a copular/predicative clause ("the dog is
+  // red"), where "be" itself is the predicate, or a genuinely unsupported
+  // fragment (a modal/dummy auxiliary with nothing after it).
+  if (!verbParts.some((p) => p.pos === 'AUX' && p.lemma === 'be')) {
+    throw new Error('No lexical main verb found (copular/predicative sentences need "be").');
+  }
+  const copula = resolveCopula(verbParts);
+  const complement = chunkCopulaComplement(after);
+  return { beforeChunks, isCopula: true, copula, complement };
+}
+
+// The copula's complement is NOT a normal object/oblique: it can be a bare
+// predicate adjective with no head noun at all ("is red"), which the
+// ordinary NP grammar can't produce (it always requires an N/PRON head).
+// So a bare run of ADJs is handled specially; anything else (a predicate
+// nominal, predicate pronoun, or locative PP) reuses the ordinary grammar.
+function chunkCopulaComplement(tokens) {
+  if (tokens.length === 0) {
+    throw new Error(
+      'Copular sentence has no complement (expected e.g. "is red", "is a dog", "is in the house").'
+    );
+  }
+  if (tokens.every((t) => t.pos === 'ADJ')) {
+    return { kind: 'ATTRIBUTE', modifiers: tokens.map((t) => t.concept) };
+  }
+
+  const complementChunks = chunkNPsAndPPs(tokens);
+  if (complementChunks.length !== 1) {
+    throw new Error(
+      'Unsupported copular complement (expected a single predicate adjective, noun phrase, or prepositional phrase).'
+    );
+  }
+  const [complementChunk] = complementChunks;
+  return complementChunk.type === 'PP'
+    ? { kind: 'LOCATIVE', pp: complementChunk }
+    : { kind: 'NOMINAL', np: complementChunk.np };
 }
 
 // Generic phrase grammar: PP := ADP? NP, NP := DET? NUM? ADJ* (N|PRON).
@@ -92,6 +130,7 @@ function buildNP(det, num, adjs, head) {
       gender: head.gender,
       definiteness: head.definiteness,
       quantifier: head.quantifier,
+      distance: head.distance,
     };
   }
 

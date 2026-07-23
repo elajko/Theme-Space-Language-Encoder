@@ -5,32 +5,21 @@
 // links its object to "theme" while "rob" links its object to "source",
 // even though both describe the same STEAL action.
 function mapToThemeSpace(parsed, langData, actionsData) {
+  if (parsed.isCopula) {
+    return mapCopulaToThemeSpace(parsed, actionsData);
+  }
+
   const { beforeChunks, verbGroup, afterChunks } = parsed;
 
-  const subjectChunk = beforeChunks.find((c) => c.type === 'NP');
   const objectChunk = afterChunks.find((c) => c.type === 'NP');
   const ppChunks = [...beforeChunks, ...afterChunks].filter((c) => c.type === 'PP');
 
   let { tense, aspect, mood, polarity } = verbGroup;
-  let subjectNP;
-
-  if (subjectChunk) {
-    subjectNP = subjectChunk.np;
-  } else {
-    // No overt subject: treat as an imperative with an understood 2nd
-    // person addressee. Unlike a truly omitted optional argument, the
-    // referent here is fully identifiable — it's just unpronounced — so
-    // it's still represented, flagged as covert.
+  const { subjectNP, imperative } = resolveSubject(beforeChunks);
+  if (imperative) {
     mood = 'imperative';
     tense = null;
     aspect = null;
-    subjectNP = {
-      kind: 'PRONOUN',
-      person: '2nd',
-      count: 'singular',
-      definiteness: 'definite',
-      covert: true,
-    };
   }
 
   const verbEntry = langData.verbs[verbGroup.lemma];
@@ -112,6 +101,77 @@ function mapToThemeSpace(parsed, langData, actionsData) {
   ];
 }
 
+// A copula clause has no verb to disambiguate senses for or link roles
+// through — "be" always maps onto one of four fixed actions depending only
+// on the shape of its complement, and every one of that action's roles is
+// filled by construction (there's no optional-role/covert-default logic to
+// run, unlike ordinary verbs).
+function mapCopulaToThemeSpace(parsed, actionsData) {
+  const { beforeChunks, copula, complement } = parsed;
+  let { tense, aspect, mood, polarity } = copula;
+  const { subjectNP, imperative } = resolveSubject(beforeChunks);
+  if (imperative) {
+    mood = 'imperative';
+    tense = null;
+    aspect = null;
+  }
+
+  let action;
+  let filled;
+
+  if (complement.kind === 'ATTRIBUTE') {
+    // "the dog is red": truth-conditionally the same content as "the red
+    // dog", just realized predicatively instead of attributively, so the
+    // property joins the subject's own modifiers rather than becoming a
+    // referent of its own.
+    action = 'ATTRIBUTE';
+    filled = {
+      theme: { ...subjectNP, modifiers: [...(subjectNP.modifiers || []), ...complement.modifiers] },
+    };
+  } else if (complement.kind === 'LOCATIVE') {
+    action = 'BE_LOCATED';
+    filled = { theme: subjectNP, location: complement.pp.np };
+  } else {
+    // NOMINAL complement: "he is a doctor" (indefinite/generic predicate,
+    // classifying) vs. "he is the king" / "that is her" (definite predicate
+    // or pronoun, identifying). Higgins (1979) and Declerck (1988)
+    // distinguish exactly this "predicational" vs. "specificational/
+    // equative" split in copular sentences by the definiteness of the
+    // postcopular NP.
+    const predicateNP = complement.np;
+    const isEquative = predicateNP.kind === 'PRONOUN' || predicateNP.definiteness === 'definite';
+    action = isEquative ? 'EQUATE' : 'CLASSIFY';
+    filled = { theme: subjectNP, [isEquative ? 'identity' : 'category']: predicateNP };
+  }
+
+  const actionDef = actionsData[action];
+  const referents = actionDef.roles.map((roleDef) => npToReferent(roleDef.theme, filled[roleDef.theme]));
+
+  return [{ predicateType: action, relationToWorld: { tense, aspect, mood, polarity, referents } }];
+}
+
+// Shared by both ordinary verbs and copulas: with no overt subject, treat
+// the clause as an imperative with an understood 2nd person addressee.
+// Unlike a truly omitted optional argument, the referent here is fully
+// identifiable — it's just unpronounced — so it's still represented,
+// flagged as covert.
+function resolveSubject(beforeChunks) {
+  const subjectChunk = beforeChunks.find((c) => c.type === 'NP');
+  if (subjectChunk) {
+    return { subjectNP: subjectChunk.np, imperative: false };
+  }
+  return {
+    subjectNP: {
+      kind: 'PRONOUN',
+      person: '2nd',
+      count: 'singular',
+      definiteness: 'definite',
+      covert: true,
+    },
+    imperative: true,
+  };
+}
+
 function disambiguateSense(senses, presentRoles) {
   const matching = senses.filter((s) =>
     (s.requiresRoles || []).every((r) => presentRoles.has(r))
@@ -132,7 +192,9 @@ function npToReferent(roleName, np) {
     // quantifier instead of either, same three-way split as full NPs.
     if (np.definiteness) relationToWorld.definiteness = np.definiteness;
     if (np.quantifier) relationToWorld.quantifier = np.quantifier;
+    if (np.distance) relationToWorld.distance = np.distance;
     if (np.covert) relationToWorld.covert = true;
+    if (np.modifiers && np.modifiers.length > 0) relationToWorld.modifiers = np.modifiers;
     return { theme: roleName, referent: 'PRONOUN', relationToWorld };
   }
 

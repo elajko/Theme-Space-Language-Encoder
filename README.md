@@ -19,7 +19,8 @@ Currently only `en` (English) is implemented, covering the full Swadesh
 a broad set of closed-class vocabulary (possessive determiners, demonstratives,
 quantifiers, numerals, prepositions, indefinite/quantificational pronouns),
 plus a handful of extra common nouns (animals, foods, tools) for good
-measure: 567 lexicon entries, 59 verbs/actions, 26 contractions in all.
+measure: 575 lexicon entries, 59 verbs + 4 copular actions (63 actions
+total), 26 contractions in all.
 
 ## Architecture
 
@@ -36,11 +37,15 @@ measure: 567 lexicon entries, 59 verbs/actions, 26 contractions in all.
     would otherwise choke on (or silently drop) contracted input.
   - `lexer.js` — looks each word up in the language's lexicon, then resolves
     words that are ambiguous between two parts of speech (e.g. English "her":
-    determiner in "her dog", pronoun in "I see her") using one generic
-    lookahead rule — see "Notable quirks" below.
+    determiner in "her dog", pronoun in "I see her"; "that": determiner in
+    "that dog", standalone demonstrative pronoun in "that is red") using one
+    generic lookahead rule — see "Notable quirks" below.
   - `verbGroup.js` — resolves a run of auxiliary + negation + main verb
     tokens into tense/aspect/mood/polarity, based on generic auxiliary
     lemmas (`be`/`have`/`will`/`do`) rather than English-specific spelling.
+    Also resolves bare copular clauses ("is red", with no lexical main verb
+    at all) separately, since "be" there is the predicate, not an aspect
+    auxiliary.
   - `chunker.js` — a generic phrase grammar (`NP := DET? NUM? ADJ* (N|PRON)`,
     `PP := ADP NP`) that groups tokens into noun phrases and adposition
     phrases. Determiners cover definite/indefinite articles, demonstratives
@@ -49,12 +54,18 @@ measure: 567 lexicon entries, 59 verbs/actions, 26 contractions in all.
     `several`), and possessives (`my`/`your`/`his`/`her`/`its`/`our`/`their`,
     which attach a `possessor` referent to the noun phrase); `NUM` covers
     cardinal numbers 1-5, which set an explicit `quantity` on the referent.
+    Also parses copular complements (predicate adjective/nominal/PP), which
+    the ordinary NP grammar can't (a bare predicate adjective has no head
+    noun at all).
   - `mapper.js` — the semantic core. Resolves verb polysemy (e.g. English
     "run" is either `RUN_MOTION` or `RUN_EXERCISE` depending on whether a
     goal is present), links subject/object/oblique phrases to thematic
     roles using the verb's per-sense `linking` data, and fills in covert
     arguments (a conventionalized default like "eat" implying food, vs. an
     imperative's understood addressee, vs. a role that's simply omitted).
+    Also maps copular clauses onto one of four fixed actions (`ATTRIBUTE`/
+    `BE_LOCATED`/`CLASSIFY`/`EQUATE`) based on the shape of the complement —
+    see "Copular sentences" below.
 - `data/actions.json` — the universal, language-agnostic inventory of
   actions and their thematic roles. This is the shared "theme space"
   vocabulary that every language's verbs map onto.
@@ -95,6 +106,11 @@ measure: 567 lexicon entries, 59 verbs/actions, 26 contractions in all.
   for one on its own (pronoun reading). `his`/`its`/`your`/`our`/`their`
   don't need this because English happens not to reuse those forms as
   object pronouns, so they're just modeled as plain possessive determiners.
+- **Demonstratives are ambiguous too**: same mechanism as "her" — "this"/
+  "that"/"these"/"those" are a determiner in "this dog" but a standalone
+  pronoun in "this is red" (which has no head noun at all: without this
+  resolution, the NP grammar would silently drop the subject entirely and
+  the clause would wrongly fall back to an imperative reading).
 - **Possessors as referents**: a possessive determiner doesn't just mark a
   noun phrase as definite — "my dog" introduces a second referent (the
   possessor). `relationToWorld.possessor` is nested as a full
@@ -143,6 +159,38 @@ values, plus a fourth case where the field is absent entirely:
   is a different dimension from referentiality/definiteness, so forcing one
   of the three values onto them would misrepresent what they mean.
 
+## Copular sentences
+
+"Be" clauses don't fit the ordinary verb pipeline at all — there's no
+lexical main verb to map onto an action or link roles through, since "be"
+itself is the predicate. They're handled by a separate path (`resolveCopula`
+in `verbGroup.js`, `chunkCopulaComplement` in `chunker.js`,
+`mapCopulaToThemeSpace` in `mapper.js`) that resolves to one of four fixed
+actions purely from the shape of the complement:
+
+- **`ATTRIBUTE`** — a bare predicate adjective ("the dog is red"). This is
+  truth-conditionally the same content as an attributive adjective ("the
+  red dog"), just realized predicatively — so the property is folded into
+  the subject's own `modifiers` rather than becoming a referent of its own.
+- **`BE_LOCATED`** — a predicate PP ("the book is on the table"). The
+  subject is a `theme`, not an `agent`: it isn't doing anything, just
+  situated somewhere.
+- **`CLASSIFY`** vs. **`EQUATE`** — a predicate noun phrase ("he is a
+  doctor" vs. "he is the king"). These look identical (subject + "be" + NP)
+  but mean different things: the first ascribes class/kind membership
+  (predicational), the second identifies the subject with another specific
+  entity (specificational/equative). Higgins (1979), *The Pseudo-Cleft
+  Construction in English*, and Declerck (1988), *Studies on Copular
+  Sentences, Clefts, and Pseudo-Clefts*, distinguish exactly this split;
+  the encoder follows their diagnostic and picks `CLASSIFY` when the
+  predicate NP is indefinite/generic ("a doctor") and `EQUATE` when it's
+  definite or a pronoun ("the king", "her").
+
+Not handled: predicate adjectives joined with "and" (no coordination
+grammar at all, so "is big and red" fails on the unsupported word "and");
+"'s"-contracted copulas ("he's sleeping"), since `'s` is left unexpanded
+(see "Contractions" above).
+
 ## Swadesh-207 coverage and its limits
 
 `data/languages/en.json`'s lexicon implements the full Swadesh 207-word
@@ -157,11 +205,6 @@ nouns/adjectives/pronouns/demonstratives/quantifiers/numerals — is wired
 all the way through to referents in the output.
 
 ## Not implemented (yet)
-
-Copular/predicative sentences ("the dog is red") aren't supported — the
-grammar always expects a lexical main verb to close out the verb group, and
-a bare copula has no verb-to-action mapping of its own (`verbGroup.js`
-throws a clear error rather than crashing on these).
 
 A decoder (theme space → sentence in a target language) is planned but out
 of scope for now. The theme space is designed to carry more information

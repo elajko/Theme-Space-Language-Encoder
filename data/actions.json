@@ -894,5 +894,53 @@
         "optional": true
       }
     ]
+  },
+  "ATTRIBUTE": {
+    "description": "Predicative-adjective copula ('the dog is red'): ascribes a property to the theme. Truth-conditionally the same content as attaching the property as a modifier attributively ('the red dog') -- predicative and attributive are just two syntactic realizations of the same relation.",
+    "roles": [
+      {
+        "theme": "theme",
+        "optional": false
+      }
+    ]
+  },
+  "BE_LOCATED": {
+    "description": "Locative copula ('the book is on the table'): asserts where the theme is. The theme isn't an agent -- it isn't doing anything, just situated somewhere.",
+    "roles": [
+      {
+        "theme": "theme",
+        "optional": false
+      },
+      {
+        "theme": "location",
+        "optional": false
+      }
+    ]
+  },
+  "CLASSIFY": {
+    "description": "Predicational copula with a nominal complement ('he is a doctor', 'whales are mammals'): ascribes class/kind membership to the theme -- the nominal counterpart of ATTRIBUTE. Following Higgins (1979) and Declerck (1988), this is the reading used when the postcopular NP is indefinite or generic.",
+    "roles": [
+      {
+        "theme": "theme",
+        "optional": false
+      },
+      {
+        "theme": "category",
+        "optional": false
+      }
+    ]
+  },
+  "EQUATE": {
+    "description": "Specificational/equative copula ('he is the king', 'that is her'): identifies the theme with another specific, definite referent rather than merely classifying it. Following Higgins (1979) and Declerck (1988), this is the reading used when the postcopular NP is definite or a pronoun.",
+    "roles": [
+      {
+        "theme": "theme",
+        "optional": false
+      },
+      {
+        "theme": "identity",
+        "optional": false
+      }
+    ]
   }
 }
