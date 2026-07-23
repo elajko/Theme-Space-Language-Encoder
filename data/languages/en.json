@@ -265,6 +265,20 @@
       "count": "singular",
       "quantifier": "NO"
     },
+    "who": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "wh": true,
+      "whType": "person"
+    },
+    "what": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "wh": true,
+      "whType": "thing"
+    },
     "the": {
       "pos": "DET",
       "definiteness": "definite"

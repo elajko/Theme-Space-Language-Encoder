@@ -138,8 +138,15 @@ function mapCopulaToThemeSpace(parsed, actionsData) {
     // distinguish exactly this "predicational" vs. "specificational/
     // equative" split in copular sentences by the definiteness of the
     // postcopular NP.
+    // A fronted wh-word as the complement ("who is she?" / "what is he?")
+    // follows the same split, but by its own lexical meaning rather than
+    // definiteness: "who" asks for identity (EQUATE), "what" asks for
+    // role/category (CLASSIFY) -- "What is he?" is answered "he's a doctor",
+    // not with a name.
     const predicateNP = complement.np;
-    const isEquative = predicateNP.kind === 'PRONOUN' || predicateNP.definiteness === 'definite';
+    const isEquative = predicateNP.wh
+      ? predicateNP.whType === 'person'
+      : predicateNP.kind === 'PRONOUN' || predicateNP.definiteness === 'definite';
     action = isEquative ? 'EQUATE' : 'CLASSIFY';
     filled = { theme: subjectNP, [isEquative ? 'identity' : 'category']: predicateNP };
   }
@@ -184,6 +191,13 @@ function disambiguateSense(senses, presentRoles) {
 }
 
 function npToReferent(roleName, np) {
+  if (np.wh) {
+    // "who"/"what" don't refer to anything — they're the very thing the
+    // question is asking to have filled in, so they get their own referent
+    // type rather than being just another (oddly unspecified) pronoun.
+    return { theme: roleName, referent: 'WH', relationToWorld: { whType: np.whType } };
+  }
+
   if (np.kind === 'PRONOUN') {
     const relationToWorld = { person: np.person, count: np.count };
     if (np.gender) relationToWorld.gender = np.gender;

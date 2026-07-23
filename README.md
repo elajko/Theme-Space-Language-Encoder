@@ -19,7 +19,7 @@ Currently only `en` (English) is implemented, covering the full Swadesh
 a broad set of closed-class vocabulary (possessive determiners, demonstratives,
 quantifiers, numerals, prepositions, indefinite/quantificational pronouns),
 plus a handful of extra common nouns (animals, foods, tools) for good
-measure: 575 lexicon entries, 59 verbs + 4 copular actions (63 actions
+measure: 577 lexicon entries, 59 verbs + 4 copular actions (63 actions
 total), 26 contractions in all.
 
 ## Architecture
@@ -191,16 +191,60 @@ grammar at all, so "is big and red" fails on the unsupported word "and");
 "'s"-contracted copulas ("he's sleeping"), since `'s` is left unexpanded
 (see "Contractions" above).
 
+## Questions
+
+Both English question types get `mood: "interrogative"` and their own
+parsing path, since neither fits the subject-first declarative grammar:
+
+- **Polar (yes/no) questions** ("Do you sleep?", "Is the dog red?", "Have
+  you slept?") front the first auxiliary ahead of the subject. A tensed AUX
+  in sentence-initial position is otherwise impossible in this grammar
+  (declaratives are always subject-first), so it's an unambiguous trigger —
+  `chunkPolarQuestion` in `chunker.js` peels the fronted auxiliary (+ a
+  fused leading NEG, for contracted negation like "Isn't the dog red?")
+  off, parses exactly one subject NP after it, then sweeps the remainder as
+  an ordinary verb group, re-assembling the same token shape
+  `resolveVerbGroup`/`resolveCopula` already expect.
+- **Wh-questions** ("Who sleeps?", "What do you eat?", "Who is she?") use
+  two new interrogative pronouns, `who` (`whType: "person"`) and `what`
+  (`whType: "thing"`), which get their own referent type (`"WH"`) rather
+  than being folded into `"PRONOUN"` — they don't refer to anything, they're
+  what the question is asking to have filled in. Subject wh-questions
+  ("who sleeps?") need no special handling at all: the wh-word just fills
+  the ordinary subject NP slot, exactly like "someone sleeps" would.
+  Non-subject wh-questions ("what do you eat?", "who is she?") invert like
+  a polar question because the fronted wh-word vacated the object or
+  copula-complement slot — `chunkWhQuestion` parses the inversion the same
+  way, then splices the wh-word into whichever slot came up empty.
+  Telling "What do you eat?" (object questioned, "do" inverts past its own
+  subject "you") apart from "What is on the table?" (subject questioned,
+  "what" already *is* the subject and "is" never inverted at all) takes
+  actually trying to parse a subject NP right after the auxiliary — both
+  look identical for the first two tokens.
+  A wh-word standing in for a copula's predicate NP also decides `CLASSIFY`
+  vs. `EQUATE` by its own lexical meaning rather than definiteness: "who"
+  asks for identity ("Who is she?" → EQUATE), "what" asks for role/category
+  ("What is he?" → CLASSIFY, answered "he's a doctor", not a name).
+
+Not handled (deferred, not attempted): adjunct wh-words `where`/`when`/
+`why`/`how`, which question an entire location/time/reason/manner adjunct
+rather than filling an existing argument slot — that needs new thematic
+roles (`time`, `reason`, `manner`) most actions don't define yet, and a way
+to question a PP as a whole rather than the NP inside it. Also not
+handled: questioning an argument buried inside a PP via preposition
+stranding or pied-piping ("Who did you give the gold to?" / "To whom did
+you give the gold?").
+
 ## Swadesh-207 coverage and its limits
 
 `data/languages/en.json`'s lexicon implements the full Swadesh 207-word
-list, except for eight items with no grammatical slot in the current
-parser: the interrogatives `who`/`what`/`where`/`when`/`how` (no
-question-formation grammar — no wh-fronting or subject-aux inversion) and
-the conjunctions `and`/`if`/`because` (no multi-clause/subordination
-grammar). Adding lexicon entries for these without the grammar to back
-them up would let them parse silently as no-ops, which seemed worse than
-leaving them out and documenting why. Everything else — all 55 verbs, all
+list, except for six items with no grammatical slot in the current parser:
+the adjunct interrogatives `where`/`when`/`how` (see "Questions" above —
+`who`/`what` **are** supported) and the conjunctions `and`/`if`/`because`
+(no multi-clause/subordination grammar). Adding lexicon entries for these
+without the grammar to back them up would let them parse silently as
+no-ops, which seemed worse than leaving them out and documenting why.
+Everything else — all 55 verbs, all
 nouns/adjectives/pronouns/demonstratives/quantifiers/numerals — is wired
 all the way through to referents in the output.
 

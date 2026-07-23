@@ -5,16 +5,56 @@ const { resolveVerbGroup, resolveCopula } = require('./verbGroup');
 // clause with one (possibly periphrastic) verb group — no subordination,
 // coordination, or discontinuous verb groups.
 function chunk(lexTokens) {
-  // Polar (yes/no) questions front the first auxiliary ahead of the
-  // subject ("Do you sleep?", "Is the dog red?") — a tensed AUX in
-  // sentence-initial position is otherwise impossible in this grammar
-  // (declaratives are always subject-first), so it's an unambiguous signal.
-  // A *bare* (untensed) leading AUX is instead the copular imperative
-  // ("Be good") already supported, which is why this checks for a tense.
-  if (lexTokens[0] && lexTokens[0].pos === 'AUX' && lexTokens[0].tense) {
-    return chunkPolarQuestion(lexTokens);
+  const hasWh = lexTokens.some((t) => t.wh);
+  const isFrontedAux = Boolean(lexTokens[0] && lexTokens[0].pos === 'AUX' && lexTokens[0].tense);
+  // "What do you eat?" (object questioned: "do" fronts, "you" is its own
+  // subject following it) vs. "What is on the table?" / "What is red?"
+  // (subject questioned: "what" already IS the subject, "is" is just the
+  // ordinary un-inverted copula for it, same as "the book is on the
+  // table"). Both start with wh-word + tensed AUX, so telling them apart
+  // means actually trying to parse a subject NP after that AUX (skipping a
+  // possible fused NEG) — if one's there, the AUX inverted past it; if not,
+  // there's no inversion and the wh-word is the subject.
+  const isFrontedWh = Boolean(
+    lexTokens[0] &&
+      lexTokens[0].wh &&
+      lexTokens[1] &&
+      lexTokens[1].pos === 'AUX' &&
+      lexTokens[1].tense &&
+      hasInvertedSubjectAfter(lexTokens, 1)
+  );
+
+  let result;
+  if (isFrontedWh) {
+    result = chunkWhQuestion(lexTokens);
+  } else if (isFrontedAux) {
+    result = chunkPolarQuestion(lexTokens);
+  } else {
+    result = chunkDeclarative(lexTokens);
   }
 
+  // Every path above builds its tense/aspect/etc. via resolveVerbGroup or
+  // resolveCopula, which always default to mood "indicative" — override it
+  // here in one place, rather than in each branch, for both question types
+  // (a fronted wh-word forces interrogative mood regardless of inversion,
+  // since a subject wh-question like "who sleeps?" never inverts at all).
+  if (hasWh || isFrontedAux || isFrontedWh) {
+    if (result.isCopula) {
+      result.copula.mood = 'interrogative';
+    } else {
+      result.verbGroup.mood = 'interrogative';
+    }
+  }
+  return result;
+}
+
+function hasInvertedSubjectAfter(lexTokens, auxIndex) {
+  const hasLeadingNeg = lexTokens[auxIndex + 1] && lexTokens[auxIndex + 1].pos === 'NEG';
+  const subjectIndex = auxIndex + 1 + (hasLeadingNeg ? 1 : 0);
+  return Boolean(parseNPOnlyAt(lexTokens, subjectIndex));
+}
+
+function chunkDeclarative(lexTokens) {
   const isVerbGroupPart = (t) => t.pos === 'AUX' || t.pos === 'V' || t.pos === 'NEG';
   const vgStart = lexTokens.findIndex((t) => t.pos === 'AUX' || t.pos === 'V');
   if (vgStart === -1) {
@@ -51,14 +91,15 @@ function chunk(lexTokens) {
   return { beforeChunks, isCopula: true, copula, complement };
 }
 
-// Only the fronted auxiliary inverts with the subject — any further
-// auxiliaries in the chain stay put next to the main verb/complement
-// ("Has she been sleeping?": "has" fronts, "she" follows it, "been
-// sleeping" stays together). So: peel off aux1 (+ a fused leading NEG, for
-// contracted negation like "Isn't the dog red?" — contraction expansion
-// puts "not" right after "is", ahead of the subject), parse exactly one
-// subject NP after that, then sweep the rest as an ordinary verb group.
-function chunkPolarQuestion(lexTokens) {
+// Shared by polar questions and non-subject wh-questions: both invert a
+// fronted auxiliary past the subject. Peels off aux1 (+ a fused leading
+// NEG, for contracted negation like "Isn't the dog red?" — contraction
+// expansion puts "not" right after "is", ahead of the subject), parses
+// exactly one subject NP after that, and sweeps the rest as an ordinary
+// verb group. Deliberately leaves `after` unparsed: polar questions and
+// wh-questions disagree on what an empty `after` means (an error, vs. "the
+// fronted wh-word fills that slot").
+function parseInvertedClause(lexTokens) {
   const aux1 = lexTokens[0];
   const hasLeadingNeg = lexTokens[1] && lexTokens[1].pos === 'NEG';
   const leadingNeg = hasLeadingNeg ? [lexTokens[1]] : [];
@@ -76,12 +117,17 @@ function chunkPolarQuestion(lexTokens) {
   while (vgEnd + 1 < rest.length && isVerbGroupPart(rest[vgEnd + 1])) {
     vgEnd++;
   }
-  const restVerbParts = rest.slice(0, vgEnd + 1);
+  const verbParts = [aux1, ...leadingNeg, ...rest.slice(0, vgEnd + 1)];
   const after = rest.slice(vgEnd + 1);
-  const verbParts = [aux1, ...leadingNeg, ...restVerbParts];
+
+  return { beforeChunks, verbParts, after };
+}
+
+function chunkPolarQuestion(lexTokens) {
+  const { beforeChunks, verbParts, after } = parseInvertedClause(lexTokens);
 
   if (verbParts.some((p) => p.pos === 'V')) {
-    const verbGroup = { ...resolveVerbGroup(verbParts), mood: 'interrogative' };
+    const verbGroup = resolveVerbGroup(verbParts);
     const afterChunks = chunkNPsAndPPs(after);
     return { beforeChunks, verbGroup, afterChunks };
   }
@@ -89,8 +135,41 @@ function chunkPolarQuestion(lexTokens) {
   if (!verbParts.some((p) => p.pos === 'AUX' && p.lemma === 'be')) {
     throw new Error('No lexical main verb found in this question (and no copula "be" either).');
   }
-  const copula = { ...resolveCopula(verbParts), mood: 'interrogative' };
+  const copula = resolveCopula(verbParts);
   const complement = chunkCopulaComplement(after);
+  return { beforeChunks, isCopula: true, copula, complement };
+}
+
+// "What do you eat?" / "Who is she?": the wh-word was fronted from the
+// object slot (ordinary verb) or the complement slot (copula), and its
+// departure is why the auxiliary inverted with the subject in the first
+// place. Parse the inverted clause as usual, then splice the wh-word into
+// whichever slot its fronting left empty.
+function chunkWhQuestion(lexTokens) {
+  const whToken = lexTokens[0];
+  const whNP = {
+    kind: 'PRONOUN',
+    wh: true,
+    whType: whToken.whType,
+    person: whToken.person,
+    count: whToken.count,
+  };
+
+  const { beforeChunks, verbParts, after } = parseInvertedClause(lexTokens.slice(1));
+
+  if (verbParts.some((p) => p.pos === 'V')) {
+    const verbGroup = resolveVerbGroup(verbParts);
+    const afterChunks = [{ type: 'NP', np: whNP }, ...chunkNPsAndPPs(after)];
+    return { beforeChunks, verbGroup, afterChunks };
+  }
+
+  if (!verbParts.some((p) => p.pos === 'AUX' && p.lemma === 'be')) {
+    throw new Error('No lexical main verb found in this question (and no copula "be" either).');
+  }
+  const copula = resolveCopula(verbParts);
+  // Nothing left after the subject ("what is he?") means the wh-word itself
+  // is the fronted predicate nominal/identity, not an ordinary complement.
+  const complement = after.length === 0 ? { kind: 'NOMINAL', np: whNP } : chunkCopulaComplement(after);
   return { beforeChunks, isCopula: true, copula, complement };
 }
 
@@ -201,6 +280,8 @@ function buildNP(det, num, adjs, head) {
       definiteness: head.definiteness,
       quantifier: head.quantifier,
       distance: head.distance,
+      wh: head.wh,
+      whType: head.whType,
     };
   }
 
