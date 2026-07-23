@@ -285,17 +285,35 @@ function buildNP(det, num, adjs, head) {
     };
   }
 
-  const count = num ? (num.value === 1 ? 'singular' : 'plural') : head.count || 'singular';
+  // "a"/"an" (definiteness "indefinite") are grammatically singular-only in
+  // English, so they override even an invariant-plural noun's own default
+  // count -- "a fish" is unambiguously one fish, regardless of "fish"
+  // defaulting to "plural" when bare (see gen_en.py).
+  const count =
+    num
+      ? (num.value === 1 ? 'singular' : 'plural')
+      : det && det.definiteness === 'indefinite'
+        ? 'singular'
+        : head.count || 'singular';
+  const definiteness = resolveDefiniteness(det, num, head, count);
 
   return {
     kind: 'NOUN',
     concept: (head.concept || head.word).toUpperCase(),
-    definiteness: resolveDefiniteness(det, head, count),
+    definiteness,
     distance: det ? det.distance : undefined,
     quantifier: det ? det.quantifier : undefined,
     possessor: det ? det.possessor : undefined,
     quantity: num ? num.value : undefined,
-    count,
+    // Kind reference (Carlson 1977) denotes the kind as a single, unified
+    // entity, not some number of individuals -- "dogs" in "dogs bark" isn't
+    // "several dogs", it's one kind, and "water" in "water is wet" isn't
+    // singular either. The plural/mass marking on a bare generic NP is just
+    // the syntactic vehicle English uses to express kind reference, not a
+    // semantic claim about cardinality, so count doesn't apply and there
+    // isn't a sensible value (singular or plural) to report — omitted
+    // rather than forced to one.
+    count: definiteness === 'generic' ? undefined : count,
     modifiers: adjs.map((a) => a.concept),
   };
 }
@@ -307,17 +325,28 @@ function buildNP(det, num, adjs, head) {
 // different thing from both "the dog" (definite) and "a dog" (indefinite).
 // Quantified NPs ("every dog", "no bread") are left with no definiteness at
 // all, since quantification is a separate dimension from referentiality.
-function resolveDefiniteness(det, head, count) {
+function resolveDefiniteness(det, num, head, count) {
   if (det && det.definiteness) {
     return det.definiteness;
   }
   if (det && det.quantifier) {
     return undefined;
   }
+  if (num) {
+    // A bare numeral ("two dogs") asserts the existence of a specific
+    // count of individuals -- existential, like "a dog", just not
+    // restricted to one. Not kind reference: Carlson/Krifka's kind-
+    // denoting bare NPs are specifically determiner-*and*-numeral-less.
+    return 'indefinite';
+  }
   if (count === 'plural' || head.mass) {
     return 'generic';
   }
-  return 'unspecified';
+  // No determiner, no numeral, bare singular count noun ("I eat cat"):
+  // genuinely unmarked/rare in English and not confidently classifiable as
+  // definite, indefinite, or generic, so nothing is reported rather than
+  // guessing at a value.
+  return undefined;
 }
 
 module.exports = { chunk };

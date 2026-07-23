@@ -132,32 +132,63 @@ total), 26 contractions in all.
 ## Definiteness and genericity
 
 Every nominal referent's `relationToWorld.definiteness` is one of three
-values, plus a fourth case where the field is absent entirely:
+values, or the field is simply absent when nothing can be confidently said:
 
 - `"definite"` — "the cat", "my dog", "this cat", and personal pronouns
   ("me", "you") all pick out a specific, identifiable referent.
 - `"indefinite"` — "a cat" asserts existence of some referent without
-  identifying it; "someone"/"anyone" work the same way as pronouns.
-- `"generic"` — a determiner-less plural or mass noun ("cats", "water")
-  doesn't refer to some existing cats or water at all; it names the *kind*
-  itself. This is a real, distinct category in formal semantics, not an
-  edge case of "indefinite": Carlson (1977), *Reference to Kinds in
-  English*, argues bare plurals are essentially proper names for kinds
-  ("kind reference"), and Krifka et al. (1995), *Genericity: An
-  Introduction*, class bare plural/mass NPs and definite-singular generics
-  ("the lion is a mammal") together as **kind-denoting** ("D-generic")
-  NPs — as opposed to **characterizing sentences** ("John smokes"), where
-  genericity lives in the predicate via a covert `GEN` quantifier
-  ("I-genericity"), not in any one NP. This encoder only detects the
-  structural D-generic case (bare plural/mass); it doesn't attempt sentence-
-  level (I-genericity) classification, which would need to tell stage-level
-  predicates ("is on the mat") apart from individual-level ones ("is a
-  mammal") to know whether e.g. "a lion is a mammal" should itself count
-  as generic. That's a real gap, documented rather than guessed at.
-- *(absent)* — quantified NPs ("every dog", "no bread") and quantificational
-  pronouns ("everyone", "nobody") get a `quantifier` instead. Quantification
-  is a different dimension from referentiality/definiteness, so forcing one
-  of the three values onto them would misrepresent what they mean.
+  identifying it; so does a bare numeral with no article ("two dogs" — a
+  specific *count* of individuals, still not kind reference); "someone"/
+  "anyone" work the same way as pronouns.
+- `"generic"` — a determiner-less, numeral-less plural or mass noun
+  ("cats", "water") doesn't refer to some existing cats or water at all;
+  it names the *kind* itself. This is a distinct category in formal
+  semantics, not an edge case of "indefinite": Carlson (1977), *Reference
+  to Kinds in English*, argues bare plurals are essentially proper names
+  for kinds ("kind reference"), and Chierchia (1998), "Reference to Kinds
+  across Language" (*Natural Language Semantics* 6), treats kind-denotation
+  as one of the fundamental semantic types an NP can have, on a par with
+  (not a subtype of) ordinary definite/indefinite reference. Krifka et al.
+  (1995), *Genericity: An Introduction*, class bare plural/mass NPs and
+  definite-singular generics ("the lion is a mammal") together as
+  **kind-denoting** ("D-generic") NPs — note that this means definite and
+  generic *aren't* mutually exclusive in general (a definite article can
+  mark kind reference too); what Krifka et al. actually rule out is an
+  *indefinite singular* achieving true kind reference ("a lion is a
+  mammal" has to be reanalyzed as a **characterizing sentence** instead,
+  where genericity lives in the predicate via a covert `GEN` quantifier —
+  "I-genericity" — rather than in the subject NP). This encoder only
+  detects the structural D-generic case (bare plural/mass with no article
+  or numeral); it doesn't attempt I-genericity classification (which would
+  need to tell stage-level predicates like "is on the mat" apart from
+  individual-level ones like "is a mammal"), nor does it detect definite
+  singular generics ("the lion is a mammal" is just tagged `"definite"`,
+  missing its kind-denoting reading). Both are real gaps, documented rather
+  than guessed at.
+- *(absent)* — three separate cases, not one: quantified NPs ("every dog",
+  "no bread") and quantificational pronouns ("everyone", "nobody") get a
+  `quantifier` instead, since quantification is a different dimension from
+  referentiality that forcing one of the three values above would
+  misrepresent; and a genuinely rare bare singular count noun with no
+  article, numeral, or quantifier at all ("dog sleeps") isn't confidently
+  classifiable as any of the three, so nothing is reported rather than
+  guessed at.
+
+`count` (singular/plural) is likewise omitted whenever `definiteness` is
+`"generic"`. A kind, per Carlson, is a single unified entity — "dogs" in
+"dogs bark" doesn't mean *several* dogs bark, any more than "water" in
+"water is wet" is one countable unit of water. The plural or mass marking
+on a bare generic NP is just the syntactic vehicle English happens to use
+to express kind reference, not a semantic claim about cardinality, so
+there's no sensible singular-or-plural value to report for it.
+
+One related lexicon-level fix worth knowing about: invariant-plural nouns
+("fish", "sheep" — spelled the same for one or many) default to `count:
+"plural"` in their single lexicon entry, since a bare, article-less "fish"
+is what triggers the generic reading ("cats eat fish"); `"a"/"an"` still
+forces `count: "singular"` on them regardless ("a fish" is unambiguously
+one), and an explicit numeral overrides the default the normal way ("two
+fish").
 
 ## Copular sentences
 

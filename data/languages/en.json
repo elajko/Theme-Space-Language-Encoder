@@ -707,7 +707,7 @@
     "fish": {
       "pos": "N",
       "concept": "FISH",
-      "count": "singular"
+      "count": "plural"
     },
     "bird": {
       "pos": "N",
@@ -1432,7 +1432,7 @@
     "sheep": {
       "pos": "N",
       "concept": "SHEEP",
-      "count": "singular"
+      "count": "plural"
     },
     "goat": {
       "pos": "N",
