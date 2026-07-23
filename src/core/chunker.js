@@ -5,6 +5,16 @@ const { resolveVerbGroup, resolveCopula } = require('./verbGroup');
 // clause with one (possibly periphrastic) verb group — no subordination,
 // coordination, or discontinuous verb groups.
 function chunk(lexTokens) {
+  // Polar (yes/no) questions front the first auxiliary ahead of the
+  // subject ("Do you sleep?", "Is the dog red?") — a tensed AUX in
+  // sentence-initial position is otherwise impossible in this grammar
+  // (declaratives are always subject-first), so it's an unambiguous signal.
+  // A *bare* (untensed) leading AUX is instead the copular imperative
+  // ("Be good") already supported, which is why this checks for a tense.
+  if (lexTokens[0] && lexTokens[0].pos === 'AUX' && lexTokens[0].tense) {
+    return chunkPolarQuestion(lexTokens);
+  }
+
   const isVerbGroupPart = (t) => t.pos === 'AUX' || t.pos === 'V' || t.pos === 'NEG';
   const vgStart = lexTokens.findIndex((t) => t.pos === 'AUX' || t.pos === 'V');
   if (vgStart === -1) {
@@ -37,6 +47,49 @@ function chunk(lexTokens) {
     throw new Error('No lexical main verb found (copular/predicative sentences need "be").');
   }
   const copula = resolveCopula(verbParts);
+  const complement = chunkCopulaComplement(after);
+  return { beforeChunks, isCopula: true, copula, complement };
+}
+
+// Only the fronted auxiliary inverts with the subject — any further
+// auxiliaries in the chain stay put next to the main verb/complement
+// ("Has she been sleeping?": "has" fronts, "she" follows it, "been
+// sleeping" stays together). So: peel off aux1 (+ a fused leading NEG, for
+// contracted negation like "Isn't the dog red?" — contraction expansion
+// puts "not" right after "is", ahead of the subject), parse exactly one
+// subject NP after that, then sweep the rest as an ordinary verb group.
+function chunkPolarQuestion(lexTokens) {
+  const aux1 = lexTokens[0];
+  const hasLeadingNeg = lexTokens[1] && lexTokens[1].pos === 'NEG';
+  const leadingNeg = hasLeadingNeg ? [lexTokens[1]] : [];
+  const subjectStart = 1 + leadingNeg.length;
+
+  const subjectResult = parseNPOnlyAt(lexTokens, subjectStart);
+  if (!subjectResult) {
+    throw new Error('Could not find a subject after the fronted auxiliary in this question.');
+  }
+  const beforeChunks = [{ type: 'NP', np: subjectResult.np }];
+
+  const rest = lexTokens.slice(subjectResult.nextIndex);
+  const isVerbGroupPart = (t) => t.pos === 'AUX' || t.pos === 'V' || t.pos === 'NEG';
+  let vgEnd = -1;
+  while (vgEnd + 1 < rest.length && isVerbGroupPart(rest[vgEnd + 1])) {
+    vgEnd++;
+  }
+  const restVerbParts = rest.slice(0, vgEnd + 1);
+  const after = rest.slice(vgEnd + 1);
+  const verbParts = [aux1, ...leadingNeg, ...restVerbParts];
+
+  if (verbParts.some((p) => p.pos === 'V')) {
+    const verbGroup = { ...resolveVerbGroup(verbParts), mood: 'interrogative' };
+    const afterChunks = chunkNPsAndPPs(after);
+    return { beforeChunks, verbGroup, afterChunks };
+  }
+
+  if (!verbParts.some((p) => p.pos === 'AUX' && p.lemma === 'be')) {
+    throw new Error('No lexical main verb found in this question (and no copula "be" either).');
+  }
+  const copula = { ...resolveCopula(verbParts), mood: 'interrogative' };
   const complement = chunkCopulaComplement(after);
   return { beforeChunks, isCopula: true, copula, complement };
 }
@@ -77,48 +130,65 @@ function chunkNPsAndPPs(tokens) {
   let i = 0;
 
   while (i < tokens.length) {
-    let adp = null;
-    if (tokens[i] && tokens[i].pos === 'ADP') {
-      adp = tokens[i];
-      i++;
-    }
-
-    let det = null;
-    if (tokens[i] && tokens[i].pos === 'DET') {
-      det = tokens[i];
-      i++;
-    }
-
-    let num = null;
-    if (tokens[i] && tokens[i].pos === 'NUM') {
-      num = tokens[i];
-      i++;
-    }
-
-    const adjs = [];
-    while (tokens[i] && tokens[i].pos === 'ADJ') {
-      adjs.push(tokens[i]);
-      i++;
-    }
-
-    const head = tokens[i];
-    if (!head || (head.pos !== 'N' && head.pos !== 'PRON')) {
+    const result = parseNPAt(tokens, i);
+    if (!result) {
       // Malformed fragment (e.g. a bare adposition/determiner with no head
       // noun following it). Skip forward rather than looping forever.
       i++;
       continue;
     }
-    i++;
-
-    const np = buildNP(det, num, adjs, head);
-    if (adp) {
-      chunks.push({ type: 'PP', adp, np });
-    } else {
-      chunks.push({ type: 'NP', np });
-    }
+    chunks.push(result.chunk);
+    i = result.nextIndex;
   }
 
   return chunks;
+}
+
+// Parses PP := ADP? NP starting at index i. Returns null if no NP (with or
+// without a leading adposition) starts there.
+function parseNPAt(tokens, i) {
+  let adp = null;
+  if (tokens[i] && tokens[i].pos === 'ADP') {
+    adp = tokens[i];
+    i++;
+  }
+  const result = parseNPOnlyAt(tokens, i);
+  if (!result) {
+    return null;
+  }
+  const chunk = adp ? { type: 'PP', adp, np: result.np } : { type: 'NP', np: result.np };
+  return { chunk, nextIndex: result.nextIndex };
+}
+
+// Parses NP := DET? NUM? ADJ* (N|PRON) starting at index i, with no leading
+// adposition allowed — used directly wherever a bare NP (never a PP) is
+// expected, e.g. a subject. Returns null if no NP starts there.
+function parseNPOnlyAt(tokens, i) {
+  let det = null;
+  if (tokens[i] && tokens[i].pos === 'DET') {
+    det = tokens[i];
+    i++;
+  }
+
+  let num = null;
+  if (tokens[i] && tokens[i].pos === 'NUM') {
+    num = tokens[i];
+    i++;
+  }
+
+  const adjs = [];
+  while (tokens[i] && tokens[i].pos === 'ADJ') {
+    adjs.push(tokens[i]);
+    i++;
+  }
+
+  const head = tokens[i];
+  if (!head || (head.pos !== 'N' && head.pos !== 'PRON')) {
+    return null;
+  }
+  i++;
+
+  return { np: buildNP(det, num, adjs, head), nextIndex: i };
 }
 
 function buildNP(det, num, adjs, head) {
