@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { tokenize } = require('./tokenizer');
+const { expandContractions } = require('./contractions');
 const { lex } = require('./lexer');
 const { chunk } = require('./chunker');
 const { mapToThemeSpace } = require('./mapper');
@@ -24,7 +25,7 @@ function encodeSentence(sentence, langCode) {
   const langData = loadLanguageData(langCode);
   const actionsData = loadActions();
 
-  const tokens = tokenize(sentence);
+  const tokens = expandContractions(tokenize(sentence), langData);
   const lexTokens = lex(tokens, langData);
 
   const unknown = lexTokens.filter((t) => t.pos === 'UNKNOWN').map((t) => t.word);

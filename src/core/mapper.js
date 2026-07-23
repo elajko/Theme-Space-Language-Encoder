@@ -24,7 +24,13 @@ function mapToThemeSpace(parsed, langData, actionsData) {
     mood = 'imperative';
     tense = null;
     aspect = null;
-    subjectNP = { kind: 'PRONOUN', person: '2nd', count: 'singular', covert: true };
+    subjectNP = {
+      kind: 'PRONOUN',
+      person: '2nd',
+      count: 'singular',
+      definiteness: 'definite',
+      covert: true,
+    };
   }
 
   const verbEntry = langData.verbs[verbGroup.lemma];
@@ -121,6 +127,11 @@ function npToReferent(roleName, np) {
   if (np.kind === 'PRONOUN') {
     const relationToWorld = { person: np.person, count: np.count };
     if (np.gender) relationToWorld.gender = np.gender;
+    // Personal pronouns ("me"/"you") are definite; "someone"/"anyone" are
+    // indefinite; quantificational pronouns ("everyone"/"nobody") carry a
+    // quantifier instead of either, same three-way split as full NPs.
+    if (np.definiteness) relationToWorld.definiteness = np.definiteness;
+    if (np.quantifier) relationToWorld.quantifier = np.quantifier;
     if (np.covert) relationToWorld.covert = true;
     return { theme: roleName, referent: 'PRONOUN', relationToWorld };
   }

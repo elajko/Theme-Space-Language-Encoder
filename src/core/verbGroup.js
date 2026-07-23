@@ -10,6 +10,12 @@ function resolveVerbGroup(parts) {
   const auxes = parts.filter((p) => p.pos === 'AUX');
   const verbs = parts.filter((p) => p.pos === 'V');
   const mainVerb = verbs[verbs.length - 1];
+  if (!mainVerb) {
+    // An auxiliary (optionally + negation) with no lexical verb after it —
+    // e.g. a bare copular/predicative sentence ("the dog is red"). Not
+    // supported: there's no verb-to-action mapping for a copula on its own.
+    throw new Error('No lexical main verb found (copular/predicative sentences are not supported).');
+  }
   const lemma = mainVerb.lemma;
   const polarity = parts.some((p) => p.pos === 'NEG') ? 'negative' : 'affirmative';
 

@@ -1,7 +1,12 @@
 function tokenize(sentence) {
   return sentence
     .toLowerCase()
-    .replace(/[.,!?;:"']/g, '')
+    // Normalize curly apostrophes to straight ones so contraction lookup
+    // (which happens after this, on a fixed apostrophe form) is reliable.
+    .replace(/[‘’]/g, "'")
+    // Strip other punctuation, but keep apostrophes — contractions like
+    // "didn't" need theirs intact to be recognized and expanded.
+    .replace(/[.,!?;:"]/g, '')
     .trim()
     .split(/\s+/)
     .filter(Boolean);

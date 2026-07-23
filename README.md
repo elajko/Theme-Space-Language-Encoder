@@ -17,9 +17,9 @@ The `-<code>` flag selects a language data file from `data/languages/<code>.json
 Currently only `en` (English) is implemented, covering the full Swadesh
 207-word list (adapted to fit the grammar the parser supports — see below),
 a broad set of closed-class vocabulary (possessive determiners, demonstratives,
-quantifiers, numerals, prepositions), plus a handful of extra common nouns
-(animals, foods, tools) for good measure: 556 lexicon entries, 59
-verbs/actions in all.
+quantifiers, numerals, prepositions, indefinite/quantificational pronouns),
+plus a handful of extra common nouns (animals, foods, tools) for good
+measure: 567 lexicon entries, 59 verbs/actions, 26 contractions in all.
 
 ## Architecture
 
@@ -27,7 +27,13 @@ verbs/actions in all.
 - `src/core/` — the language-agnostic engine. No English (or any other
   language) is hardcoded here; every piece of linguistic knowledge is read
   out of a language data file.
-  - `tokenizer.js` — splits raw text into words.
+  - `tokenizer.js` — splits raw text into words (keeping apostrophes, since
+    contraction expansion needs them intact).
+  - `contractions.js` — expands contracted words into their full multi-word
+    form ("didn't" -> `["did", "not"]`) before lexing, via a per-language
+    lookup table (`langData.contractions`) — the rest of the pipeline
+    assumes auxiliaries/negation/pronouns are already separate tokens and
+    would otherwise choke on (or silently drop) contracted input.
   - `lexer.js` — looks each word up in the language's lexicon, then resolves
     words that are ambiguous between two parts of speech (e.g. English "her":
     determiner in "her dog", pronoun in "I see her") using one generic
@@ -101,6 +107,41 @@ verbs/actions in all.
 - **Negation**: "I do not sleep" sets `polarity: "negative"` in
   `relationToWorld` (default is `"affirmative"`), via generic do-support
   auxiliary handling — no English-specific negation logic in `src/`.
+- **Contractions**: "I didn't sleep" expands to `did` + `not` before
+  parsing. `'s` (ambiguous three ways between "is", "has", and the Saxon
+  genitive possessive marker in "the dog's bone") and `'d` (ambiguous
+  between "had" and modal "would", which isn't modeled) are deliberately
+  left unexpanded rather than guessing — use the uncontracted forms instead.
+
+## Definiteness and genericity
+
+Every nominal referent's `relationToWorld.definiteness` is one of three
+values, plus a fourth case where the field is absent entirely:
+
+- `"definite"` — "the cat", "my dog", "this cat", and personal pronouns
+  ("me", "you") all pick out a specific, identifiable referent.
+- `"indefinite"` — "a cat" asserts existence of some referent without
+  identifying it; "someone"/"anyone" work the same way as pronouns.
+- `"generic"` — a determiner-less plural or mass noun ("cats", "water")
+  doesn't refer to some existing cats or water at all; it names the *kind*
+  itself. This is a real, distinct category in formal semantics, not an
+  edge case of "indefinite": Carlson (1977), *Reference to Kinds in
+  English*, argues bare plurals are essentially proper names for kinds
+  ("kind reference"), and Krifka et al. (1995), *Genericity: An
+  Introduction*, class bare plural/mass NPs and definite-singular generics
+  ("the lion is a mammal") together as **kind-denoting** ("D-generic")
+  NPs — as opposed to **characterizing sentences** ("John smokes"), where
+  genericity lives in the predicate via a covert `GEN` quantifier
+  ("I-genericity"), not in any one NP. This encoder only detects the
+  structural D-generic case (bare plural/mass); it doesn't attempt sentence-
+  level (I-genericity) classification, which would need to tell stage-level
+  predicates ("is on the mat") apart from individual-level ones ("is a
+  mammal") to know whether e.g. "a lion is a mammal" should itself count
+  as generic. That's a real gap, documented rather than guessed at.
+- *(absent)* — quantified NPs ("every dog", "no bread") and quantificational
+  pronouns ("everyone", "nobody") get a `quantifier` instead. Quantification
+  is a different dimension from referentiality/definiteness, so forcing one
+  of the three values onto them would misrepresent what they mean.
 
 ## Swadesh-207 coverage and its limits
 
@@ -116,6 +157,11 @@ nouns/adjectives/pronouns/demonstratives/quantifiers/numerals — is wired
 all the way through to referents in the output.
 
 ## Not implemented (yet)
+
+Copular/predicative sentences ("the dog is red") aren't supported — the
+grammar always expects a lexical main verb to close out the verb group, and
+a bare copula has no verb-to-action mapping of its own (`verbGroup.js`
+throws a clear error rather than crashing on these).
 
 A decoder (theme space → sentence in a target language) is planned but out
 of scope for now. The theme space is designed to carry more information

@@ -90,20 +90,44 @@ function buildNP(det, num, adjs, head) {
       person: head.person,
       count: head.count,
       gender: head.gender,
+      definiteness: head.definiteness,
+      quantifier: head.quantifier,
     };
   }
+
+  const count = num ? (num.value === 1 ? 'singular' : 'plural') : head.count || 'singular';
 
   return {
     kind: 'NOUN',
     concept: (head.concept || head.word).toUpperCase(),
-    definiteness: det ? det.definiteness : 'unspecified',
+    definiteness: resolveDefiniteness(det, head, count),
     distance: det ? det.distance : undefined,
     quantifier: det ? det.quantifier : undefined,
     possessor: det ? det.possessor : undefined,
     quantity: num ? num.value : undefined,
-    count: num ? (num.value === 1 ? 'singular' : 'plural') : head.count || 'singular',
+    count,
     modifiers: adjs.map((a) => a.concept),
   };
+}
+
+// English's three-way split (Carlson 1977; Krifka et al. 1995,
+// "Genericity: An Introduction"): a determiner-less plural or mass noun
+// ("dogs", "water") doesn't refer to some existing specific dog(s)/water —
+// it names the kind itself ("kind reference"/"D-genericity"), which is a
+// different thing from both "the dog" (definite) and "a dog" (indefinite).
+// Quantified NPs ("every dog", "no bread") are left with no definiteness at
+// all, since quantification is a separate dimension from referentiality.
+function resolveDefiniteness(det, head, count) {
+  if (det && det.definiteness) {
+    return det.definiteness;
+  }
+  if (det && det.quantifier) {
+    return undefined;
+  }
+  if (count === 'plural' || head.mass) {
+    return 'generic';
+  }
+  return 'unspecified';
 }
 
 module.exports = { chunk };

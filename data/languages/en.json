@@ -1,65 +1,182 @@
 {
   "code": "en",
   "name": "English",
+  "contractions": {
+    "don't": [
+      "do",
+      "not"
+    ],
+    "doesn't": [
+      "does",
+      "not"
+    ],
+    "didn't": [
+      "did",
+      "not"
+    ],
+    "isn't": [
+      "is",
+      "not"
+    ],
+    "aren't": [
+      "are",
+      "not"
+    ],
+    "wasn't": [
+      "was",
+      "not"
+    ],
+    "weren't": [
+      "were",
+      "not"
+    ],
+    "haven't": [
+      "have",
+      "not"
+    ],
+    "hasn't": [
+      "has",
+      "not"
+    ],
+    "hadn't": [
+      "had",
+      "not"
+    ],
+    "won't": [
+      "will",
+      "not"
+    ],
+    "i'm": [
+      "i",
+      "am"
+    ],
+    "you're": [
+      "you",
+      "are"
+    ],
+    "we're": [
+      "we",
+      "are"
+    ],
+    "they're": [
+      "they",
+      "are"
+    ],
+    "i've": [
+      "i",
+      "have"
+    ],
+    "you've": [
+      "you",
+      "have"
+    ],
+    "we've": [
+      "we",
+      "have"
+    ],
+    "they've": [
+      "they",
+      "have"
+    ],
+    "i'll": [
+      "i",
+      "will"
+    ],
+    "you'll": [
+      "you",
+      "will"
+    ],
+    "he'll": [
+      "he",
+      "will"
+    ],
+    "she'll": [
+      "she",
+      "will"
+    ],
+    "it'll": [
+      "it",
+      "will"
+    ],
+    "we'll": [
+      "we",
+      "will"
+    ],
+    "they'll": [
+      "they",
+      "will"
+    ]
+  },
   "lexicon": {
     "i": {
       "pos": "PRON",
       "person": "1st",
-      "count": "singular"
+      "count": "singular",
+      "definiteness": "definite"
     },
     "me": {
       "pos": "PRON",
       "person": "1st",
-      "count": "singular"
+      "count": "singular",
+      "definiteness": "definite"
     },
     "we": {
       "pos": "PRON",
       "person": "1st",
-      "count": "plural"
+      "count": "plural",
+      "definiteness": "definite"
     },
     "us": {
       "pos": "PRON",
       "person": "1st",
-      "count": "plural"
+      "count": "plural",
+      "definiteness": "definite"
     },
     "you": {
       "pos": "PRON",
       "person": "2nd",
-      "count": "singular"
+      "count": "singular",
+      "definiteness": "definite"
     },
     "he": {
       "pos": "PRON",
       "person": "3rd",
       "count": "singular",
-      "gender": "masculine"
+      "gender": "masculine",
+      "definiteness": "definite"
     },
     "him": {
       "pos": "PRON",
       "person": "3rd",
       "count": "singular",
-      "gender": "masculine"
+      "gender": "masculine",
+      "definiteness": "definite"
     },
     "she": {
       "pos": "PRON",
       "person": "3rd",
       "count": "singular",
-      "gender": "feminine"
+      "gender": "feminine",
+      "definiteness": "definite"
     },
     "it": {
       "pos": "PRON",
       "person": "3rd",
       "count": "singular",
-      "gender": "neuter"
+      "gender": "neuter",
+      "definiteness": "definite"
     },
     "they": {
       "pos": "PRON",
       "person": "3rd",
-      "count": "plural"
+      "count": "plural",
+      "definiteness": "definite"
     },
     "them": {
       "pos": "PRON",
       "person": "3rd",
-      "count": "plural"
+      "count": "plural",
+      "definiteness": "definite"
     },
     "her": {
       "pos": "AMBIG",
@@ -77,9 +194,76 @@
           "pos": "PRON",
           "person": "3rd",
           "count": "singular",
-          "gender": "feminine"
+          "gender": "feminine",
+          "definiteness": "definite"
         }
       ]
+    },
+    "someone": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "definiteness": "indefinite"
+    },
+    "somebody": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "definiteness": "indefinite"
+    },
+    "something": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "definiteness": "indefinite"
+    },
+    "anyone": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "definiteness": "indefinite"
+    },
+    "anybody": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "definiteness": "indefinite"
+    },
+    "anything": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "definiteness": "indefinite"
+    },
+    "everyone": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "quantifier": "EVERY"
+    },
+    "everybody": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "quantifier": "EVERY"
+    },
+    "everything": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "quantifier": "EVERY"
+    },
+    "nobody": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "quantifier": "NO"
+    },
+    "nothing": {
+      "pos": "PRON",
+      "person": "3rd",
+      "count": "singular",
+      "quantifier": "NO"
     },
     "the": {
       "pos": "DET",
@@ -586,7 +770,8 @@
     "bark": {
       "pos": "N",
       "concept": "BARK",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "flower": {
       "pos": "N",
@@ -601,7 +786,8 @@
     "grass": {
       "pos": "N",
       "concept": "GRASS",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "rope": {
       "pos": "N",
@@ -616,17 +802,20 @@
     "skin": {
       "pos": "N",
       "concept": "SKIN",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "meat": {
       "pos": "N",
       "concept": "MEAT",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "blood": {
       "pos": "N",
       "concept": "BLOOD",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "bone": {
       "pos": "N",
@@ -641,7 +830,8 @@
     "fat": {
       "pos": "N",
       "concept": "FAT",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "egg": {
       "pos": "N",
@@ -686,7 +876,8 @@
     "hair": {
       "pos": "N",
       "concept": "HAIR",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "head": {
       "pos": "N",
@@ -831,7 +1022,8 @@
     "guts": {
       "pos": "N",
       "concept": "GUTS",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "neck": {
       "pos": "N",
@@ -886,12 +1078,14 @@
     "sun": {
       "pos": "N",
       "concept": "SUN",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "moon": {
       "pos": "N",
       "concept": "MOON",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "star": {
       "pos": "N",
@@ -906,12 +1100,14 @@
     "water": {
       "pos": "N",
       "concept": "WATER",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "rain": {
       "pos": "N",
       "concept": "RAIN",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "river": {
       "pos": "N",
@@ -946,7 +1142,8 @@
     "salt": {
       "pos": "N",
       "concept": "SALT",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "stone": {
       "pos": "N",
@@ -961,17 +1158,20 @@
     "sand": {
       "pos": "N",
       "concept": "SAND",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "dust": {
       "pos": "N",
       "concept": "DUST",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "earth": {
       "pos": "N",
       "concept": "EARTH",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "cloud": {
       "pos": "N",
@@ -986,12 +1186,14 @@
     "fog": {
       "pos": "N",
       "concept": "FOG",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "sky": {
       "pos": "N",
       "concept": "SKY",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "wind": {
       "pos": "N",
@@ -1006,17 +1208,20 @@
     "snow": {
       "pos": "N",
       "concept": "SNOW",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "ice": {
       "pos": "N",
       "concept": "ICE",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "smoke": {
       "pos": "N",
       "concept": "SMOKE",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "fire": {
       "pos": "N",
@@ -1031,7 +1236,8 @@
     "ash": {
       "pos": "N",
       "concept": "ASH",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "road": {
       "pos": "N",
@@ -1096,17 +1302,20 @@
     "food": {
       "pos": "N",
       "concept": "FOOD",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "air": {
       "pos": "N",
       "concept": "AIR",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "game": {
       "pos": "N",
       "concept": "GAME",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "cat": {
       "pos": "N",
@@ -1236,27 +1445,32 @@
     "bread": {
       "pos": "N",
       "concept": "BREAD",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "gold": {
       "pos": "N",
       "concept": "GOLD",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "rice": {
       "pos": "N",
       "concept": "RICE",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "milk": {
       "pos": "N",
       "concept": "MILK",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "cheese": {
       "pos": "N",
       "concept": "CHEESE",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "apple": {
       "pos": "N",
@@ -1271,7 +1485,8 @@
     "corn": {
       "pos": "N",
       "concept": "CORN",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "potato": {
       "pos": "N",
@@ -1286,7 +1501,8 @@
     "honey": {
       "pos": "N",
       "concept": "HONEY",
-      "count": "singular"
+      "count": "singular",
+      "mass": true
     },
     "store": {
       "pos": "N",
