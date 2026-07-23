@@ -285,14 +285,19 @@ function buildNP(det, num, adjs, head) {
     };
   }
 
-  // "a"/"an" (definiteness "indefinite") are grammatically singular-only in
-  // English, so they override even an invariant-plural noun's own default
-  // count -- "a fish" is unambiguously one fish, regardless of "fish"
-  // defaulting to "plural" when bare (see gen_en.py).
+  // "a"/"an" specifically (not every indefinite determiner -- "many"/
+  // "some"/"no"/etc. are indefinite too, but combine with plural nouns
+  // just fine) are grammatically singular-only in English, so they
+  // override even an invariant-plural noun's own default count -- "a fish"
+  // is unambiguously one fish, regardless of "fish" defaulting to "plural"
+  // when bare (see gen_en.py). The indefinite article is the one indefinite
+  // determiner with no quantifier of its own, which is what distinguishes
+  // it here.
+  const isIndefiniteArticle = det && det.definiteness === 'indefinite' && !det.quantifier;
   const count =
     num
       ? (num.value === 1 ? 'singular' : 'plural')
-      : det && det.definiteness === 'indefinite'
+      : isIndefiniteArticle
         ? 'singular'
         : head.count || 'singular';
   const definiteness = resolveDefiniteness(det, num, head, count);
@@ -323,14 +328,14 @@ function buildNP(det, num, adjs, head) {
 // ("dogs", "water") doesn't refer to some existing specific dog(s)/water —
 // it names the kind itself ("kind reference"/"D-genericity"), which is a
 // different thing from both "the dog" (definite) and "a dog" (indefinite).
-// Quantified NPs ("every dog", "no bread") are left with no definiteness at
-// all, since quantification is a separate dimension from referentiality.
+// Quantificational determiners ("every dog", "no bread", "many dogs") get
+// one of these same three values too — every determiner in the lexicon
+// carries its own "definiteness" (see gen_en.py for the weak/strong
+// classification behind each one) — plus a separate "quantifier" field for
+// which one, exactly.
 function resolveDefiniteness(det, num, head, count) {
   if (det && det.definiteness) {
     return det.definiteness;
-  }
-  if (det && det.quantifier) {
-    return undefined;
   }
   if (num) {
     // A bare numeral ("two dogs") asserts the existence of a specific

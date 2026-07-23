@@ -239,30 +239,35 @@
       "pos": "PRON",
       "person": "3rd",
       "count": "singular",
+      "definiteness": "definite",
       "quantifier": "EVERY"
     },
     "everybody": {
       "pos": "PRON",
       "person": "3rd",
       "count": "singular",
+      "definiteness": "definite",
       "quantifier": "EVERY"
     },
     "everything": {
       "pos": "PRON",
       "person": "3rd",
       "count": "singular",
+      "definiteness": "definite",
       "quantifier": "EVERY"
     },
     "nobody": {
       "pos": "PRON",
       "person": "3rd",
       "count": "singular",
+      "definiteness": "indefinite",
       "quantifier": "NO"
     },
     "nothing": {
       "pos": "PRON",
       "person": "3rd",
       "count": "singular",
+      "definiteness": "indefinite",
       "quantifier": "NO"
     },
     "who": {
@@ -296,7 +301,7 @@
       "readings": [
         {
           "pos": "DET",
-          "definiteness": "demonstrative",
+          "definiteness": "definite",
           "distance": "proximal"
         },
         {
@@ -313,7 +318,7 @@
       "readings": [
         {
           "pos": "DET",
-          "definiteness": "demonstrative",
+          "definiteness": "definite",
           "distance": "distal"
         },
         {
@@ -330,7 +335,7 @@
       "readings": [
         {
           "pos": "DET",
-          "definiteness": "demonstrative",
+          "definiteness": "definite",
           "distance": "proximal"
         },
         {
@@ -347,7 +352,7 @@
       "readings": [
         {
           "pos": "DET",
-          "definiteness": "demonstrative",
+          "definiteness": "definite",
           "distance": "distal"
         },
         {
@@ -361,55 +366,68 @@
     },
     "all": {
       "pos": "DET",
+      "definiteness": "definite",
       "quantifier": "ALL"
-    },
-    "many": {
-      "pos": "DET",
-      "quantifier": "MANY"
-    },
-    "some": {
-      "pos": "DET",
-      "quantifier": "SOME"
-    },
-    "few": {
-      "pos": "DET",
-      "quantifier": "FEW"
-    },
-    "other": {
-      "pos": "DET",
-      "quantifier": "OTHER"
-    },
-    "each": {
-      "pos": "DET",
-      "quantifier": "EACH"
     },
     "every": {
       "pos": "DET",
+      "definiteness": "definite",
       "quantifier": "EVERY"
     },
-    "any": {
+    "each": {
       "pos": "DET",
-      "quantifier": "ANY"
-    },
-    "no": {
-      "pos": "DET",
-      "quantifier": "NO"
+      "definiteness": "definite",
+      "quantifier": "EACH"
     },
     "both": {
       "pos": "DET",
+      "definiteness": "definite",
       "quantifier": "BOTH"
     },
     "either": {
       "pos": "DET",
+      "definiteness": "definite",
       "quantifier": "EITHER"
     },
     "neither": {
       "pos": "DET",
+      "definiteness": "definite",
       "quantifier": "NEITHER"
+    },
+    "some": {
+      "pos": "DET",
+      "definiteness": "indefinite",
+      "quantifier": "SOME"
+    },
+    "many": {
+      "pos": "DET",
+      "definiteness": "indefinite",
+      "quantifier": "MANY"
+    },
+    "few": {
+      "pos": "DET",
+      "definiteness": "indefinite",
+      "quantifier": "FEW"
     },
     "several": {
       "pos": "DET",
+      "definiteness": "indefinite",
       "quantifier": "SEVERAL"
+    },
+    "no": {
+      "pos": "DET",
+      "definiteness": "indefinite",
+      "quantifier": "NO"
+    },
+    "any": {
+      "pos": "DET",
+      "definiteness": "indefinite",
+      "quantifier": "ANY"
+    },
+    "other": {
+      "pos": "DET",
+      "definiteness": "indefinite",
+      "quantifier": "OTHER"
     },
     "my": {
       "pos": "DET",

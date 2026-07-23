@@ -131,15 +131,45 @@ total), 26 contractions in all.
 
 ## Definiteness and genericity
 
-Every nominal referent's `relationToWorld.definiteness` is one of three
-values, or the field is simply absent when nothing can be confidently said:
+Every nominal referent's `relationToWorld.definiteness` is one of exactly
+three values — every determiner in the lexicon resolves to one of these,
+with no fourth "in-between" value — or the field is simply absent when
+nothing can be confidently said:
 
-- `"definite"` — "the cat", "my dog", "this cat", and personal pronouns
-  ("me", "you") all pick out a specific, identifiable referent.
+- `"definite"` — "the cat" picks out a specific, identifiable referent, and
+  so do personal pronouns ("me", "you"). Two categories that might look
+  like they deserve their own value turn out, on inspection, to just be
+  definite plus some extra detail, carried in a separate field rather than
+  invented as a new definiteness value:
+  - **Demonstratives** ("this cat", "that cat") are definite determiners —
+    "that cat" identifies a specific referent exactly the way "the cat"
+    does. Proximity (near vs. far from the speaker) is extra information
+    layered on top, not a different kind of definiteness, so it's carried
+    separately as `distance` ("proximal"/"distal") alongside
+    `definiteness: "definite"`, rather than as a `"demonstrative"` value
+    that would've had to sit outside the definite/indefinite/generic system.
+  - **Strong quantificational determiners** ("every cat", "all cats", "each
+    cat", "both cats", "either cat", "neither cat") are also definite.
+    Milsark (1977), "Toward an explanation of certain peculiarities of the
+    existential construction in English" (*Linguistic Analysis* 3),
+    classifies determiners as **strong** or **weak** by whether they can
+    appear in a "there is/are ___" existential: strong determiners can't
+    ("*there is every solution", "*there are all interesting solutions",
+    "*there are both computers", "*there is neither computer" — Barwise &
+    Cooper 1981 formalize this as presupposing a fixed domain rather than
+    asserting a cardinality within an open one), and pattern with "the",
+    not "a". `quantifier` (`"EVERY"`/`"ALL"`/`"EACH"`/`"BOTH"`/`"EITHER"`/
+    `"NEITHER"`) records which one, as extra detail — same pattern as
+    `distance` above.
 - `"indefinite"` — "a cat" asserts existence of some referent without
   identifying it; so does a bare numeral with no article ("two dogs" — a
-  specific *count* of individuals, still not kind reference); "someone"/
-  "anyone" work the same way as pronouns.
+  specific *count* of individuals, still not kind reference, see below);
+  "someone"/"anyone" work the same way as pronouns. **Weak** quantificational
+  determiners belong here too, by the same Milsark/Barwise & Cooper test —
+  "there are many/some/several/no/any/other cats" are all fine, patterning
+  with "a" rather than "the" — so "many"/"some"/"few"/"several"/"no"/"any"/
+  "other" get `definiteness: "indefinite"` plus a `quantifier` recording
+  which one.
 - `"generic"` — a determiner-less, numeral-less plural or mass noun
   ("cats", "water") doesn't refer to some existing cats or water at all;
   it names the *kind* itself. This is a distinct category in formal
@@ -158,21 +188,19 @@ values, or the field is simply absent when nothing can be confidently said:
   mammal" has to be reanalyzed as a **characterizing sentence** instead,
   where genericity lives in the predicate via a covert `GEN` quantifier —
   "I-genericity" — rather than in the subject NP). This encoder only
-  detects the structural D-generic case (bare plural/mass with no article
-  or numeral); it doesn't attempt I-genericity classification (which would
-  need to tell stage-level predicates like "is on the mat" apart from
-  individual-level ones like "is a mammal"), nor does it detect definite
-  singular generics ("the lion is a mammal" is just tagged `"definite"`,
-  missing its kind-denoting reading). Both are real gaps, documented rather
-  than guessed at.
-- *(absent)* — three separate cases, not one: quantified NPs ("every dog",
-  "no bread") and quantificational pronouns ("everyone", "nobody") get a
-  `quantifier` instead, since quantification is a different dimension from
-  referentiality that forcing one of the three values above would
-  misrepresent; and a genuinely rare bare singular count noun with no
-  article, numeral, or quantifier at all ("dog sleeps") isn't confidently
+  detects the structural D-generic case (bare plural/mass with no article,
+  numeral, or quantifier); it doesn't attempt I-genericity classification
+  (which would need to tell stage-level predicates like "is on the mat"
+  apart from individual-level ones like "is a mammal"), nor does it detect
+  definite singular generics ("the lion is a mammal" is just tagged
+  `"definite"`, missing its kind-denoting reading). Both are real gaps,
+  documented rather than guessed at.
+- *(absent)* — a genuinely rare bare singular count noun with no article,
+  numeral, or quantifier at all ("dog sleeps") isn't confidently
   classifiable as any of the three, so nothing is reported rather than
-  guessed at.
+  guessed at. This is now the *only* case the field is missing for — every
+  determiner (including quantifiers and demonstratives) resolves to one of
+  the three values above.
 
 `count` (singular/plural) is likewise omitted whenever `definiteness` is
 `"generic"`. A kind, per Carlson, is a single unified entity — "dogs" in
